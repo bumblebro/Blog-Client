@@ -1,10 +1,10 @@
 import { Blogs } from "@prisma/client";
 import axios from "axios";
 import Link from "next/link";
-import Markdown from "../Markdown";
 import CopyBtn from "../ClientComponents/CopyBtn";
 import ShareBtn from "../ClientComponents/ShareBtn";
 import DeSlugify from "@/libs/DeSlugify";
+import MarkdownComponent from "../Markdown";
 
 interface JsonValue {
   [key: string]: any;
@@ -144,7 +144,7 @@ function BlogDisplay({ decodedslug, currentPost, posts, latposts }: BlogDisp) {
                   </div>
                 )}
                 <div className="leading-[1.7rem] font-[330] text-black ">
-                  <Markdown text={contentItem.description} />
+                  <MarkdownComponent text={contentItem.description} />
                 </div>
                 {i == 2 && (
                   <h1 className="px-4 py-4 mt-4 italic bg-[#eeeff1]">
