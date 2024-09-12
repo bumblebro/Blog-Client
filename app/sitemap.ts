@@ -21,7 +21,7 @@ async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const categoryslug: MetadataRoute.Sitemap = sluglayer.map((item: any) => {
     let str = "";
     item.slug.map((item: any) => {
-      str = `${str}/${item}`;
+      str = `${str}/${encodeURIComponent(item)}`;
     });
     return {
       url: `${process.env.NEXT_PUBLIC_BASE_API_URL}${str}`,
@@ -30,7 +30,11 @@ async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const allblog = await GETBLOGALL();
 
   const titleslug: MetadataRoute.Sitemap = allblog?.map((item: Blogs) => ({
-    url: `${process.env.NEXT_PUBLIC_BASE_API_URL}/${item.section}/${item.subsection}/${item.subsubsection}/${item.title}`,
+    url: `${process.env.NEXT_PUBLIC_BASE_API_URL}/${encodeURIComponent(
+      item.section
+    )}/${encodeURIComponent(item.subsection)}/${encodeURIComponent(
+      item.subsubsection
+    )}/${encodeURIComponent(item.title)}`,
   }));
 
   return [
