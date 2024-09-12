@@ -154,9 +154,9 @@ function BlogDisplay({ decodedslug, currentPost, posts, latposts }: BlogDisp) {
               </div>
             );
           })}{" "}
-          <h1 className="px-4 py-4 my-4 italic bg-[#eeeff1]">
+          {/* <h1 className="px-4 py-4 my-4 italic bg-[#eeeff1]">
             {currentPost.quote}
-          </h1>
+          </h1> */}
         </div>{" "}
         <div className="bg-[#eeeff1] py-8 px-4  hidden md:flex md:flex-col">
           <h1 className="text-lg font-semibold text-center pb-4">
