@@ -38,7 +38,7 @@ type SEOType = {
 };
 
 export async function generateStaticParams() {
-  const sluglayer = (await GenerateSlugs(subSections)).slice(0, 5);
+  const sluglayer = (await GenerateSlugs(subSections));
 
   let paramsArray: any = [];
   let page = 0;
@@ -88,7 +88,9 @@ export async function generateStaticParams() {
       paramsArray = [...paramsArray, ...titleArray];
       page++; // Move to the next page
     }
-    return [...sluglayer.slice(0, 5), ...paramsArray.slice(0, 5)];
+    console.log(`sluglayer`,sluglayer.length);
+    console.log(`paramsArray`,paramsArray.length);
+    return [...sluglayer, ...paramsArray];
   } catch (error) {
     // console.error("Error fetching blogs:", error);
     return [];
@@ -152,7 +154,6 @@ export async function generateMetadata({ params }: params): Promise<Metadata> {
       const response = await GETBLOGPOST({
         title: decodedslug[decodedslug.length - 1],
       });
-      console.log(`response`, response);
       if (response) {
         currentPost = response;
       }

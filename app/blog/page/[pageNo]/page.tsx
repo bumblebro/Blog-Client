@@ -23,8 +23,8 @@ export async function generateStaticParams() {
       slug: ["page", i],
     });
   }
-  console.log(`blog/pages`, arr.slice(0, 5));
-  return arr.slice(0, 5);
+  console.log(`blogpageslug`, arr.length);
+  return arr;
 }
 
 export async function generateMetadata({ params }: params): Promise<Metadata> {
