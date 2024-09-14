@@ -181,10 +181,7 @@ const options = {
 type Props = {
   text: string;
 };
-const md = markdownit();
-
 function MarkdownComponent({ text }: Props) {
-  const result = md.render(text);
 
   // return <div dangerouslySetInnerHTML={{ __html: result }}></div>;
   // return <ReactMarkdown>{text}</ReactMarkdown>;

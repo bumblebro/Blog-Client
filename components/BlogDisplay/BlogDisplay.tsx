@@ -133,9 +133,11 @@ function BlogDisplay({ decodedslug, currentPost, posts, latposts }: BlogDisp) {
                       {contentItem.title}
                     </h1>
                   ))} */}
-                <div className="leading-[1.7rem] font-[330] text-black mb-4">
-                  <MarkdownComponent text={contentItem.description} />
-                </div>{" "}
+                {contentItem.description && (
+                  <div className="leading-[1.7rem] font-[330] text-black mb-4">
+                    <MarkdownComponent text={contentItem.description} />
+                  </div>
+                )}
                 {contentItem.url == "null" || contentItem.url == null ? null : (
                   <div className=" flex flex-col gap-2">
                     <img
