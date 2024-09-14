@@ -29,7 +29,7 @@ async function sitemap(): Promise<MetadataRoute.Sitemap> {
   });
   const allblog = await GETBLOGALL();
 
-  const titleslug: MetadataRoute.Sitemap = allblog?.map((item: Blogs) => ({
+  const titleslug: MetadataRoute.Sitemap = allblog?.map((item: any) => ({
     url: `${process.env.NEXT_PUBLIC_BASE_API_URL}/${encodeURIComponent(
       item.section
     )}/${encodeURIComponent(item.subsection)}/${encodeURIComponent(

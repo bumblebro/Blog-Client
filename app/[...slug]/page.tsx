@@ -38,14 +38,41 @@ type SEOType = {
 };
 
 export async function generateStaticParams() {
+  const sluglayer = (await GenerateSlugs(subSections)).slice(0, 5);
+
+  let paramsArray: any = [];
+  let page = 0;
+  const pageSize = 100;
+
+  // const response = await GETBLOGALL();
+
+  // const titlearray = response
+  //   ?.map((item: any) => {
+  //     if (item.section && item.subsection && item.subsubsection)
+  //       return {
+  //         slug: [
+  //           item.section,
+  //           item.subsection,
+  //           item.subsubsection,
+  //           item.title,
+  //         ],
+  //       };
+  //   })
+  //   .slice(0, 5);
+  // console.log(`sluglayer`, sluglayer);
+  // console.log(`titlearray`, titlearray);
+
   try {
-    const sluglayer = (await GenerateSlugs(subSections)).slice(0, 5);
+    while (true) {
+      // Fetch paginated blogs
+      const response = await GETBLOGALL(page, pageSize);
 
-    const response = await GETBLOGALL();
+      if (response.length === 0) {
+        break; // Break loop when no more records
+      }
 
-    const titlearray = response
-      ?.map((item: Blogs) => {
-        if (item.section && item.subsection && item.subsubsection)
+      const titleArray = response?.map((item: any) => {
+        if (item.section && item.subsection && item.subsubsection) {
           return {
             slug: [
               item.section,
@@ -54,13 +81,16 @@ export async function generateStaticParams() {
               item.title,
             ],
           };
-      })
-      .slice(0, 5);
-    console.log(`sluglayer`, sluglayer);
-    console.log(`titlearray`, titlearray);
-    return [...sluglayer, ...titlearray];
+        }
+      });
+
+      // Append to params array
+      paramsArray = [...paramsArray, ...titleArray];
+      page++; // Move to the next page
+    }
+    return [...sluglayer.slice(0, 5), ...paramsArray.slice(0, 5)];
   } catch (error) {
-    console.error("Error fetching blogs:", error);
+    // console.error("Error fetching blogs:", error);
     return [];
   }
 }
@@ -105,10 +135,10 @@ export async function generateMetadata({ params }: params): Promise<Metadata> {
     return {
       title: `${DeSlugify(
         decodedslug[decodedslug.length - 1]
-      )} - ${categoryList.map((item) => DeSlugify(` ${item}`))} & More`,
+      )} - ${categoryList?.map((item) => DeSlugify(` ${item}`))} & More`,
       description: `Here are the latest on ${DeSlugify(
         decodedslug[decodedslug.length - 1]
-      )}, ${categoryList.map((item) => DeSlugify(` ${item}`))} & More`,
+      )}, ${categoryList?.map((item) => DeSlugify(` ${item}`))} & More`,
     };
   } else if (decodedslug.length === 3) {
     return {
@@ -118,29 +148,72 @@ export async function generateMetadata({ params }: params): Promise<Metadata> {
       }`,
     };
   } else {
-    const response = await GETBLOGPOST({
-      title: decodedslug[decodedslug.length - 1],
-    });
-    if (response) {
-      currentPost = response;
-    }
+    try {
+      const response = await GETBLOGPOST({
+        title: decodedslug[decodedslug.length - 1],
+      });
+      console.log(`response`, response);
+      if (response) {
+        currentPost = response;
+      }
 
-    return {
-      title: DeSlugify(currentPost?.title || ""),
-      description: (currentPost?.seo as SEOType)?.metaDescription,
-      keywords: [
-        ...(currentPost?.seo as SEOType)?.primaryKeywords,
-        ...(currentPost?.seo as SEOType)?.secondaryKeywords,
-      ],
-      openGraph: {
-        images: [
-          {
-            url: currentPost?.imageurl || "",
-          },
+      return {
+        title: DeSlugify(currentPost?.title || ""),
+        description: (currentPost?.seo as SEOType)?.metaDescription,
+        keywords: [
+          ...((currentPost?.seo as SEOType)?.primaryKeywords
+            ? (currentPost?.seo as SEOType)?.primaryKeywords
+            : []),
+          ...((currentPost?.seo as SEOType)?.secondaryKeywords
+            ? (currentPost?.seo as SEOType)?.secondaryKeywords
+            : []),
         ],
-      },
-    };
+        openGraph: {
+          images: [
+            {
+              url: currentPost?.imageurl || "",
+            },
+          ],
+        },
+      };
+    } catch (e) {
+      console.log(`errrorr`, e);
+      return {};
+    }
   }
+}
+
+function validateCategoryPath(pathArray: string[], sections: object) {
+  // Check if the length of the array is less than 4
+  if (pathArray.length >= 4) {
+    return false; // Invalid length
+  }
+
+  let currentSection: any = sections;
+
+  // Iterate through each element in the path array
+  for (let i = 0; i < pathArray.length; i++) {
+    const currentCategory = pathArray[i];
+
+    // Convert the section to lowercase and match it with lowercased keys
+    const matchingKey = Object.keys(currentSection).find(
+      (key) => key.toLowerCase() === currentCategory.toLowerCase()
+    );
+
+    if (matchingKey) {
+      currentSection = currentSection[matchingKey]; // Go deeper into the next section
+    } else if (
+      Array.isArray(currentSection) &&
+      currentSection.includes(currentCategory)
+    ) {
+      return true; // If we reach the end and it's an array that contains the category
+    } else {
+      return false; // If the category is not found at any level
+    }
+  }
+
+  // If the loop completes, it means the path exists
+  return true;
 }
 
 async function BlogCategory({ params }: params) {
@@ -185,7 +258,24 @@ async function BlogCategory({ params }: params) {
     slugs = decodedslug;
   }
 
+  // if (decodedslug.length < 4) {
+  //   console.log(`weferwfwe`, decodedslug);
+  //   decodedslug.map((item) => {
+  //     if (!isCategoryPresent(item, subSections)) {
+  //       return notFound();
+  //     }
+  //   });
+  // }
+  const moddecodedslug = decodedslug.slice(0, 3);
+
+  if (!validateCategoryPath(moddecodedslug, subSections)) {
+    return notFound();
+  }
+
   if (decodedslug.length === 1) {
+    // if (!isCategoryPresent(decodedslug[0], subSections)) {
+    //   return notFound();
+    // }
     const response = await GETBLOGSLAYER({
       category: decodedslug[0],
       pageNo: page,
@@ -199,6 +289,9 @@ async function BlogCategory({ params }: params) {
     hasNextPage = response.metaData.hasNextPage;
     totalBlogs = response.metaData.totalBlogs;
   } else if (decodedslug.length === 2) {
+    // if (!isCategoryPresent(decodedslug[1], subSections)) {
+    //   return notFound();
+    // }
     const response = await GETBLOGSLAYER({
       subCategory: decodedslug[1],
       pageNo: page,
@@ -223,6 +316,9 @@ async function BlogCategory({ params }: params) {
     // );
     // const response = await res.json();
 
+    // if (!isCategoryPresent(decodedslug[2], subSections)) {
+    //   return notFound();
+    // }
     const response = await GETBLOGSLAYER({
       subSubCategory: decodedslug[2],
       pageNo: page,
@@ -343,19 +439,6 @@ async function BlogCategory({ params }: params) {
       latposts = response.blogs;
     }
   } else if (currentPost?.section) {
-    // const res = await fetch(
-    //   `${process.env.NEXT_PUBLIC_BASE_API_URL}/api/blogslayer?subsection=${
-    //     currentPost.subsection
-    //   }&pageNo=${"1"}&pageSize=${"20"}`,
-    //   {
-    //     method: "GET",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //   }
-    // );
-    // const response = await res.json();
-
     const response = await GETBLOGSLAYER({
       category: currentPost.section,
       pageNo: 1,
