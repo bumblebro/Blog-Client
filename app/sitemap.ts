@@ -27,15 +27,41 @@ async function sitemap(): Promise<MetadataRoute.Sitemap> {
       url: `${process.env.NEXT_PUBLIC_BASE_API_URL}${str}`,
     };
   });
-  const allblog = await GETBLOGALL();
 
-  const titleslug: MetadataRoute.Sitemap = allblog?.map((item: any) => ({
-    url: `${process.env.NEXT_PUBLIC_BASE_API_URL}/${encodeURIComponent(
-      item.section
-    )}/${encodeURIComponent(item.subsection)}/${encodeURIComponent(
-      item.subsubsection
-    )}/${encodeURIComponent(item.title)}`,
-  }));
+  let paramsArray: any = [];
+  let page = 0;
+  const pageSize = 100;
+
+  while (true) {
+    // Fetch paginated blogs
+    const response = await GETBLOGALL(page, pageSize);
+
+    if (response.length === 0) {
+      break; // Break loop when no more records
+    }
+
+    const titleslug: MetadataRoute.Sitemap = response?.map((item: any) => ({
+      url: `${process.env.NEXT_PUBLIC_BASE_API_URL}/${encodeURIComponent(
+        item.section
+      )}/${encodeURIComponent(item.subsection)}/${encodeURIComponent(
+        item.subsubsection
+      )}/${encodeURIComponent(item.title)}`,
+    }));
+
+    // Append to params array
+    paramsArray = [...paramsArray, ...titleslug];
+    page++; // Move to the next page
+  }
+
+  // const allblog = await GETBLOGALL();
+
+  // const titleslug: MetadataRoute.Sitemap = allblog?.map((item: any) => ({
+  //   url: `${process.env.NEXT_PUBLIC_BASE_API_URL}/${encodeURIComponent(
+  //     item.section
+  //   )}/${encodeURIComponent(item.subsection)}/${encodeURIComponent(
+  //     item.subsubsection
+  //   )}/${encodeURIComponent(item.title)}`,
+  // }));
 
   return [
     {
@@ -56,9 +82,9 @@ async function sitemap(): Promise<MetadataRoute.Sitemap> {
     {
       url: `${process.env.NEXT_PUBLIC_BASE_API_URL}/blog`,
     },
-    ...blogslug,
-    ...titleslug,
+    ...paramsArray,
     ...categoryslug,
+    ...blogslug,
   ];
 }
 
