@@ -10,6 +10,7 @@ import Footer from "@/components/footer/Footer";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.wordofmany.com"),
   title: {
     default: "Word of Many",
     template: "%s | Word of Many",

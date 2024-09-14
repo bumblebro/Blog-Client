@@ -117,21 +117,27 @@ function BlogDisplay({ decodedslug, currentPost, posts, latposts }: BlogDisp) {
           {currentPost.content?.map((item, i) => {
             const contentItem = item as ContentItem;
             return (
-              <div key={i} className="flex flex-col  pb-8 px-4 xl:px-0">
+              <div key={i} className="flex flex-col  pb-6 px-4 xl:px-0">
                 {/* <h1
                 className={`${
                   i == 0 && "hidden"
                 } text-[18.72px] pb-6 font-semibold `}
               > */}
-                <h1
-                  className={`${
-                    contentItem.title == "Introduction" && "hidden"
-                  } text-[18.72px] pb-6 font-semibold `}
-                >
-                  {contentItem.title}
-                </h1>
+                {/* {contentItem.title != null ||
+                  (contentItem.title != "null" && (
+                    <h1
+                      className={`${
+                        contentItem.title == "Introduction" && "hidden"
+                      } text-[18.72px]  font-semibold `}
+                    >
+                      {contentItem.title}
+                    </h1>
+                  ))} */}
+                <div className="leading-[1.7rem] font-[330] text-black mb-4">
+                  <MarkdownComponent text={contentItem.description} />
+                </div>{" "}
                 {contentItem.url == "null" || contentItem.url == null ? null : (
-                  <div className="mb-4 flex flex-col gap-2">
+                  <div className=" flex flex-col gap-2">
                     <img
                       // className="h-[17rem] object-contain md:h-[21rem] lg:h-[31.5rem] xl:h-[39.5rem] sm:h-[28.5rem] 2xl:h-[38rem]"
                       className="max-h-[17rem] object-contain md:max-h-[21rem] lg:max-h-[31.5rem] xl:max-h-[39.5rem] sm:max-h-[28.5rem] 2xl:max-h-[38rem]"
@@ -143,20 +149,17 @@ function BlogDisplay({ decodedslug, currentPost, posts, latposts }: BlogDisp) {
                     </p>
                   </div>
                 )}
-                <div className="leading-[1.7rem] font-[330] text-black ">
-                  <MarkdownComponent text={contentItem.description} />
-                </div>
-                {i == 2 && (
+                {/* {i == 2 && (
                   <h1 className="px-4 py-4 mt-4 italic bg-[#eeeff1]">
                     {currentPost.quote}
                   </h1>
-                )}{" "}
+                )}{" "} */}
               </div>
             );
           })}{" "}
-          {/* <h1 className="px-4 py-4 my-4 italic bg-[#eeeff1]">
+          <h1 className="px-4 py-4 my-4 italic bg-[#eeeff1]">
             {currentPost.quote}
-          </h1> */}
+          </h1>
         </div>{" "}
         <div className="bg-[#eeeff1] py-8 px-4  hidden md:flex md:flex-col">
           <h1 className="text-lg font-semibold text-center pb-4">
