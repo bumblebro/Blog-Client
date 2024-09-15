@@ -82,13 +82,13 @@ function Category({ decodedslug, totalBlogs }: Category) {
         {`The latest news and reviews of everything ${
           DeSlugify(decodedslug[decodedslug.length - 1][0].toUpperCase()) +
           DeSlugify(decodedslug[decodedslug.length - 1].slice(1))
-        }. `}
+        }: ${categoryList?.map((item) => DeSlugify(` ${item}`))} and More`}
       </p>
       <div className="overflow-scroll  no-scrollbar w-full xl:max-w-[73rem] ">
         <ul className="flex items-center text-xs  pt-8 gap-12 justify-center md:gap-16 underline  ">
           {categoryList.map((item, i) => (
             <Link
-              className="w-max"
+              className=" "
               key={i}
               href={`${
                 decodedslug[decodedslug.length - 1]
