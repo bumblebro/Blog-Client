@@ -63,7 +63,7 @@ function Category({ decodedslug, totalBlogs }: Category) {
                   />
                 </svg>
                 <Link
-                  href={url}
+                  href={url.toLowerCase()}
                   className="inline-flex capitalize items-center font-medium
                   text-gray-500 hover:text-blue-600 "
                 >
@@ -79,8 +79,10 @@ function Category({ decodedslug, totalBlogs }: Category) {
         {DeSlugify(decodedslug[decodedslug.length - 1])}
       </h1>
       <p className="text-sm text-gray-800  md:w-[70%] xl:w-[60%] 2xl:w-[50%]">
-        The latest news and reviews of everything Apple. From AppleTV to
-        AirPods, MacBooks to iPads, Apple Watches, accessories and more.
+        {`The latest news and reviews of everything ${
+          DeSlugify(decodedslug[decodedslug.length - 1][0].toUpperCase()) +
+          DeSlugify(decodedslug[decodedslug.length - 1].slice(1))
+        }. `}
       </p>
       <div className="overflow-scroll  no-scrollbar w-full xl:max-w-[73rem] ">
         <ul className="flex items-center text-xs  pt-8 gap-12 justify-center md:gap-16 underline  ">
@@ -88,7 +90,9 @@ function Category({ decodedslug, totalBlogs }: Category) {
             <Link
               className="w-max"
               key={i}
-              href={`${decodedslug[decodedslug.length - 1]}/${item}`}
+              href={`${
+                decodedslug[decodedslug.length - 1]
+              }/${item.toLowerCase()}`}
             >
               {DeSlugify(item)}
             </Link>

@@ -74,6 +74,6 @@ export default async function GETBLOGSLAYER({
     };
   } catch (error) {
     console.error("Database Error:", error);
-    throw new Error("Failed to fetch invoice.");
+    // throw new Error("Database Error");
   }
 }

@@ -63,7 +63,7 @@ function CategoryPost({ decodedslug, totalBlogs }: CategoryPost) {
                   />
                 </svg>
                 <a
-                  href={url}
+                  href={url.toLowerCase()}
                   className="inline-flex capitalize items-center  font-medium text-gray-500 hover:text-blue-600 "
                 >
                   {DeSlugify(item)}

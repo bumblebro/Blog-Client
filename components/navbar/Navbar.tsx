@@ -160,7 +160,7 @@ function Navbar() {
                   <li key={index}>
                     <Link
                       onClick={handleSidebar}
-                      href={`/tech/${item}`}
+                      href={`/tech/${item.toLowerCase()}`}
                       key={index}
                     >
                       {DeSlugify(item)}
@@ -182,7 +182,7 @@ function Navbar() {
                   <li key={index}>
                     <Link
                       onClick={handleSidebar}
-                      href={`/fashion/${item}`}
+                      href={`/fashion/${item.toLowerCase()}`}
                       key={index}
                     >
                       {DeSlugify(item)}
@@ -194,7 +194,7 @@ function Navbar() {
             <div>
               <Link
                 onClick={handleSidebar}
-                href={"/Rides"}
+                href={"/rides"}
                 className="font-semibold "
               >
                 Rides
@@ -204,7 +204,7 @@ function Navbar() {
                   <li key={index}>
                     <Link
                       onClick={handleSidebar}
-                      href={`/Rides/${item}`}
+                      href={`/rides/${item.toLowerCase()}`}
                       key={index}
                     >
                       {DeSlugify(item)}
@@ -216,7 +216,7 @@ function Navbar() {
             <div>
               <Link
                 onClick={handleSidebar}
-                href={"/Lifestyle"}
+                href={"/lifestyle"}
                 className="font-semibold "
               >
                 Lifestyle
@@ -226,7 +226,7 @@ function Navbar() {
                   <li key={index}>
                     <Link
                       onClick={handleSidebar}
-                      href={`/Lifestyle/${item}`}
+                      href={`/lifestyle/${item.toLowerCase()}`}
                       key={index}
                     >
                       {DeSlugify(item)}
@@ -238,7 +238,7 @@ function Navbar() {
             <div>
               <Link
                 onClick={handleSidebar}
-                href={"/Entertainment"}
+                href={"/entertainment"}
                 className="font-semibold "
               >
                 Entertainment
@@ -248,7 +248,7 @@ function Navbar() {
                   <li key={index}>
                     <Link
                       onClick={handleSidebar}
-                      href={`/Entertainment/${item}`}
+                      href={`/entertainment/${item.toLowerCase()}`}
                       key={index}
                     >
                       {DeSlugify(item)}
@@ -260,7 +260,7 @@ function Navbar() {
             <div>
               <Link
                 onClick={handleSidebar}
-                href={"/Living"}
+                href={"/living"}
                 className="font-semibold "
               >
                 Living
@@ -270,7 +270,7 @@ function Navbar() {
                   <li key={index}>
                     <Link
                       onClick={handleSidebar}
-                      href={`/Living/${item}`}
+                      href={`/living/${item.toLowerCase()}`}
                       key={index}
                     >
                       {DeSlugify(item)}
@@ -282,7 +282,7 @@ function Navbar() {
             <div>
               <Link
                 onClick={handleSidebar}
-                href={"/Outdoors"}
+                href={"/outdoors"}
                 className="font-semibold "
               >
                 Outdoors
@@ -292,7 +292,7 @@ function Navbar() {
                   <li key={index}>
                     <Link
                       onClick={handleSidebar}
-                      href={`/Outdoors/${item}`}
+                      href={`/outdoors/${item.toLowerCase()}`}
                       key={index}
                     >
                       {DeSlugify(item)}
@@ -304,7 +304,7 @@ function Navbar() {
             <div>
               <Link
                 onClick={handleSidebar}
-                href={"/News"}
+                href={"/news"}
                 className="font-semibold"
               >
                 News
@@ -314,7 +314,7 @@ function Navbar() {
                   <li key={index}>
                     <Link
                       onClick={handleSidebar}
-                      href={`/News/${item}`}
+                      href={`/news/${item.toLowerCase()}`}
                       key={index}
                     >
                       {DeSlugify(item)}

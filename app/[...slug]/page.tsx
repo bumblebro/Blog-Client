@@ -38,7 +38,7 @@ type SEOType = {
 };
 
 export async function generateStaticParams() {
-  const sluglayer = (await GenerateSlugs(subSections));
+  const sluglayer = await GenerateSlugs(subSections);
 
   let paramsArray: any = [];
   let page = 0;
@@ -75,21 +75,20 @@ export async function generateStaticParams() {
         if (item.section && item.subsection && item.subsubsection) {
           return {
             slug: [
-              item.section,
-              item.subsection,
-              item.subsubsection,
-              item.title,
+              item.section.toLowerCase(),
+              item.subsection.toLowerCase(),
+              item.subsubsection.toLowerCase(),
+              item.title.toLowerCase(),
             ],
           };
         }
       });
-
       // Append to params array
       paramsArray = [...paramsArray, ...titleArray];
       page++; // Move to the next page
     }
-    console.log(`sluglayer`,sluglayer.length);
-    console.log(`paramsArray`,paramsArray.length);
+    console.log(`sluglayer`, sluglayer.length);
+    console.log(`paramsArray`, paramsArray.length);
     return [...sluglayer, ...paramsArray];
   } catch (error) {
     // console.error("Error fetching blogs:", error);
@@ -205,7 +204,11 @@ function validateCategoryPath(pathArray: string[], sections: object) {
       currentSection = currentSection[matchingKey]; // Go deeper into the next section
     } else if (
       Array.isArray(currentSection) &&
-      currentSection.includes(currentCategory)
+      // currentSection.includes(currentCategory)
+      currentSection.some(
+        (category: string) =>
+          category.toLowerCase() === currentCategory.toLowerCase()
+      )
     ) {
       return true; // If we reach the end and it's an array that contains the category
     } else {

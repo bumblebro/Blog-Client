@@ -8,13 +8,19 @@ export default async function GETBLOGPOST({ title }: { title: string }) {
   // const { searchParams } = new URL(req.url);
   try {
     const titlename = title || undefined;
-    const blogs = await prisma.blogs.findUnique({
-      where: { title: titlename },
+    const blogs = await prisma.blogs.findFirst({
+      where: {
+        title: {
+          equals: titlename,
+          mode: "insensitive",
+        },
+      },
+
       cacheStrategy: { ttl: 60 },
     });
     return blogs;
   } catch (error) {
     console.error("Database Error:", error);
-    throw new Error("Failed to fetch invoice.");
+    throw new Error("Failed to fetch.");
   }
 }
