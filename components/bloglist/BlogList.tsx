@@ -15,11 +15,17 @@ function BlogList({ posts }: posts) {
         {posts.map((item, index) => (
           <div key={index} className="pt-4 ">
             <Link
-              href={`/${item.section !== "null" ? item.section + "/" : ""}${
-                item.subsection !== "null" ? item.subsection + "/" : ""
+              href={`/${
+                item.section !== "null" ? item.section.toLowerCase() + "/" : ""
               }${
-                item.subsubsection !== "null" ? item.subsubsection + "/" : ""
-              }${item.title}`}
+                item.subsection !== "null"
+                  ? item.subsection.toLowerCase() + "/"
+                  : ""
+              }${
+                item.subsubsection !== "null"
+                  ? item.subsubsection.toLowerCase() + "/"
+                  : ""
+              }${item.title.toLowerCase()}`}
             >
               <img
                 className="h-[75vw] object-cover w-full pb-4 lg:h-[12rem] xl:h-[13rem] md:h-[17rem] sm:h-[29rem]"
@@ -28,10 +34,10 @@ function BlogList({ posts }: posts) {
               />
             </Link>
             <Link
-              href={`/${item.section !== "null" ? item.section + "/" : ""}${
-                item.subsection !== "null" ? item.subsection + "/" : ""
+              href={`/${item.section !== "null" ? item.section.toLowerCase() + "/" : ""}${
+                item.subsection !== "null" ? item.subsection.toLowerCase() + "/" : ""
               }${
-                item.subsubsection !== "null" ? item.subsubsection + "/" : ""
+                item.subsubsection !== "null" ? item.subsubsection.toLowerCase() + "/" : ""
               }`}
             >
               <h1 className="text-sm text-blue-600 font-semibold pb-2 tracking-wider">
@@ -40,11 +46,11 @@ function BlogList({ posts }: posts) {
             </Link>
 
             <Link
-              href={`/${item.section !== "null" ? item.section + "/" : ""}${
-                item.subsection !== "null" ? item.subsection + "/" : ""
+              href={`/${item.section !== "null" ? item.section.toLowerCase() + "/" : ""}${
+                item.subsection !== "null" ? item.subsection.toLowerCase() + "/" : ""
               }${
-                item.subsubsection !== "null" ? item.subsubsection + "/" : ""
-              }${item.title}`}
+                item.subsubsection !== "null" ? item.subsubsection.toLowerCase() + "/" : ""
+              }${item.title.toLowerCase()}`}
             >
               <h2 className="font-semibold">{DeSlugify(item.title)}</h2>
             </Link>

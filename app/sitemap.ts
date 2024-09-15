@@ -21,10 +21,10 @@ async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const categoryslug: MetadataRoute.Sitemap = sluglayer.map((item: any) => {
     let str = "";
     item.slug.map((item: any) => {
-      str = `${str}/${encodeURIComponent(item)}`;
+      str = `${str.toLowerCase()}/${encodeURIComponent(item).toLowerCase()}`;
     });
     return {
-      url: `${process.env.NEXT_PUBLIC_BASE_API_URL}${str}`,
+      url: `${process.env.NEXT_PUBLIC_BASE_API_URL}${str.toLowerCase()}`,
     };
   });
 
@@ -43,9 +43,11 @@ async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const titleslug: MetadataRoute.Sitemap = response?.map((item: any) => ({
       url: `${process.env.NEXT_PUBLIC_BASE_API_URL}/${encodeURIComponent(
         item.section
-      )}/${encodeURIComponent(item.subsection)}/${encodeURIComponent(
+      ).toLowerCase()}/${encodeURIComponent(
+        item.subsection
+      ).toLowerCase()}/${encodeURIComponent(
         item.subsubsection
-      )}/${encodeURIComponent(item.title)}`,
+      ).toLowerCase()}/${encodeURIComponent(item.title).toLowerCase()}`,
     }));
 
     // Append to params array

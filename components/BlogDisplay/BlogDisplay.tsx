@@ -70,7 +70,10 @@ function BlogDisplay({ decodedslug, currentPost, posts, latposts }: BlogDisp) {
               }`}
             >
               <h1 className="font-semibold  mx-4 pb-2 text-sm tracking-wider text-[#004ff2] hidden md:flex xl:mx-0">
-                {DeSlugify(decodedslug[decodedslug.length - 2])}
+                {DeSlugify(
+                  decodedslug[decodedslug.length - 2]
+                )[0].toUpperCase() +
+                  DeSlugify(decodedslug[decodedslug.length - 2]).slice(1)}
               </h1>
             </Link>
             <h1 className="text-2xl mx-4 xl:mx-0  font-semibold border-b-[0.1px] pb-4 mb-6 border-gray-500  capitalize sm:text-[25px] md:text-[30px] lg:text-[32px] xl:pb-6">
@@ -173,14 +176,18 @@ function BlogDisplay({ decodedslug, currentPost, posts, latposts }: BlogDisp) {
                 <div key={i} className="grid grid-cols-[100px_auto] gap-4">
                   <Link
                     href={`/${
-                      item.section !== "null" ? item.section + "/" : ""
+                      item.section !== "null"
+                        ? item.section.toLowerCase() + "/"
+                        : ""
                     }${
-                      item.subsection !== "null" ? item.subsection + "/" : ""
+                      item.subsection !== "null"
+                        ? item.subsection.toLowerCase() + "/"
+                        : ""
                     }${
                       item.subsubsection !== "null"
-                        ? item.subsubsection + "/"
+                        ? item.subsubsection.toLowerCase() + "/"
                         : ""
-                    }${item.title}`}
+                    }${item.title.toLowerCase()}`}
                   >
                     <img
                       className="object-cover w-full h-[75px]"
@@ -192,14 +199,16 @@ function BlogDisplay({ decodedslug, currentPost, posts, latposts }: BlogDisp) {
                     {item.subsubsection ? (
                       <Link
                         href={`/${
-                          item.section !== "null" ? item.section + "/" : ""
+                          item.section !== "null"
+                            ? item.section.toLowerCase() + "/"
+                            : ""
                         }${
                           item.subsection !== "null"
-                            ? item.subsection + "/"
+                            ? item.subsection.toLowerCase() + "/"
                             : ""
                         }${
                           item.subsubsection !== "null"
-                            ? item.subsubsection + "/"
+                            ? item.subsubsection.toLowerCase() + "/"
                             : ""
                         }`}
                       >
@@ -211,10 +220,12 @@ function BlogDisplay({ decodedslug, currentPost, posts, latposts }: BlogDisp) {
                     ) : item.subsection ? (
                       <Link
                         href={`/${
-                          item.section !== "null" ? item.section + "/" : ""
+                          item.section !== "null"
+                            ? item.section.toLowerCase() + "/"
+                            : ""
                         }${
                           item.subsection !== "null"
-                            ? item.subsection + "/"
+                            ? item.subsection.toLowerCase() + "/"
                             : ""
                         }`}
                       >
@@ -225,7 +236,9 @@ function BlogDisplay({ decodedslug, currentPost, posts, latposts }: BlogDisp) {
                     ) : (
                       <Link
                         href={`/${
-                          item.section !== "null" ? item.section + "/" : ""
+                          item.section !== "null"
+                            ? item.section.toLowerCase() + "/"
+                            : ""
                         }`}
                       >
                         {" "}
@@ -236,14 +249,18 @@ function BlogDisplay({ decodedslug, currentPost, posts, latposts }: BlogDisp) {
                     )}{" "}
                     <Link
                       href={`/${
-                        item.section !== "null" ? item.section + "/" : ""
+                        item.section !== "null"
+                          ? item.section.toLowerCase() + "/"
+                          : ""
                       }${
-                        item.subsection !== "null" ? item.subsection + "/" : ""
+                        item.subsection !== "null"
+                          ? item.subsection.toLowerCase() + "/"
+                          : ""
                       }${
                         item.subsubsection !== "null"
-                          ? item.subsubsection + "/"
+                          ? item.subsubsection.toLowerCase() + "/"
                           : ""
-                      }${item.title}`}
+                      }${item.title.toLowerCase()}`}
                     >
                       <h1 className="text-sm font-semibold line-clamp-2 ">
                         {DeSlugify(item.title)}
@@ -265,13 +282,19 @@ function BlogDisplay({ decodedslug, currentPost, posts, latposts }: BlogDisp) {
             return (
               <div key={i} className="grid grid-cols-[100px_auto] gap-4">
                 <Link
-                  href={`/${item.section !== "null" ? item.section + "/" : ""}${
-                    item.subsection !== "null" ? item.subsection + "/" : ""
+                  href={`/${
+                    item.section !== "null"
+                      ? item.section.toLowerCase() + "/"
+                      : ""
+                  }${
+                    item.subsection !== "null"
+                      ? item.subsection.toLowerCase() + "/"
+                      : ""
                   }${
                     item.subsubsection !== "null"
-                      ? item.subsubsection + "/"
+                      ? item.subsubsection.toLowerCase() + "/"
                       : ""
-                  }${item.title}`}
+                  }${item.title.toLowerCase()}`}
                 >
                   <img
                     className="object-cover w-full h-[75px]"
@@ -283,12 +306,16 @@ function BlogDisplay({ decodedslug, currentPost, posts, latposts }: BlogDisp) {
                   {item.subsubsection ? (
                     <Link
                       href={`/${
-                        item.section !== "null" ? item.section + "/" : ""
+                        item.section !== "null"
+                          ? item.section.toLowerCase() + "/"
+                          : ""
                       }${
-                        item.subsection !== "null" ? item.subsection + "/" : ""
+                        item.subsection !== "null"
+                          ? item.subsection.toLowerCase() + "/"
+                          : ""
                       }${
                         item.subsubsection !== "null"
-                          ? item.subsubsection + "/"
+                          ? item.subsubsection.toLowerCase() + "/"
                           : ""
                       }`}
                     >
@@ -300,9 +327,13 @@ function BlogDisplay({ decodedslug, currentPost, posts, latposts }: BlogDisp) {
                   ) : item.subsection ? (
                     <Link
                       href={`/${
-                        item.section !== "null" ? item.section + "/" : ""
+                        item.section !== "null"
+                          ? item.section.toLowerCase() + "/"
+                          : ""
                       }${
-                        item.subsection !== "null" ? item.subsection + "/" : ""
+                        item.subsection !== "null"
+                          ? item.subsection.toLowerCase() + "/"
+                          : ""
                       }`}
                     >
                       <h1 className="text-xs text-[#1e50ce] font-semibold tracking-wider">
@@ -312,7 +343,9 @@ function BlogDisplay({ decodedslug, currentPost, posts, latposts }: BlogDisp) {
                   ) : (
                     <Link
                       href={`/${
-                        item.section !== "null" ? item.section + "/" : ""
+                        item.section !== "null"
+                          ? item.section.toLowerCase() + "/"
+                          : ""
                       }`}
                     >
                       {" "}
@@ -323,14 +356,18 @@ function BlogDisplay({ decodedslug, currentPost, posts, latposts }: BlogDisp) {
                   )}{" "}
                   <Link
                     href={`/${
-                      item.section !== "null" ? item.section + "/" : ""
+                      item.section !== "null"
+                        ? item.section.toLowerCase() + "/"
+                        : ""
                     }${
-                      item.subsection !== "null" ? item.subsection + "/" : ""
+                      item.subsection !== "null"
+                        ? item.subsection.toLowerCase() + "/"
+                        : ""
                     }${
                       item.subsubsection !== "null"
-                        ? item.subsubsection + "/"
+                        ? item.subsubsection.toLowerCase() + "/"
                         : ""
-                    }${item.title}`}
+                    }${item.title.toLowerCase()}`}
                   >
                     <h1 className="text-sm font-semibold line-clamp-2 ">
                       {DeSlugify(item.title)}
