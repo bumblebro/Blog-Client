@@ -15,6 +15,8 @@ interface params {
   };
 }
 
+export const revalidate = 120;
+
 export async function generateStaticParams() {
   const response = await GETBLOG({ pageNo: "1" });
   const totalpage = response.metaData.totalPages;
