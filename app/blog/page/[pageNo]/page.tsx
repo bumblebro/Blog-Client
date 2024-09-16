@@ -15,7 +15,6 @@ interface params {
   };
 }
 
-export const dynamicParams = true;
 
 export async function generateStaticParams() {
   const response = await GETBLOG({ pageNo: "1" });
