@@ -28,13 +28,15 @@ function FeaturedPost({ posts }: posts) {
               : ""
           }${posts[randomNum]?.title}`}
         >
+          {/* <img src={posts[randomNum]?.imageurl} alt="" /> */}
           <Image
             fill
+            sizes="(min-width: 640px) 608px,(min-width: 768px) 368px,(min-width: 1024px) 496px,(min-width: 1280px) 584px,(min-width: 1536px) 584px, 328px"
             src={posts[randomNum]?.imageurl}
-            objectFit="cover"
-            quality={100}
+            style={{ objectFit: "cover" }}
+            quality={75}
             alt={posts[randomNum]?.imagealt}
-            priority={true}
+            priority
           />{" "}
         </Link>{" "}
         <div className="bg-black text-white left-[5%]  text-center  w-[90%] py-6 absolute top-[80%] px-6 md:relative md:h-full md:top-0 md:flex md:flex-col md:justify-center md:left-0 md:w-full   ">

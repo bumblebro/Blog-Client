@@ -1,5 +1,6 @@
 import DeSlugify from "@/libs/DeSlugify";
 import { Blogs } from "@prisma/client";
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -27,29 +28,52 @@ function BlogList({ posts }: posts) {
                   : ""
               }${item.title.toLowerCase()}`}
             >
-              <img
+              <div className="h-[75vw] w-full  lg:h-[12rem] xl:h-[13rem] md:h-[17rem] sm:h-[29rem] relative">
+                <Image
+                  fill
+                  sizes="(min-width: 640px) 608px,(min-width: 768px) 362px,(min-width: 1024px) 233px,(min-width: 1280px) 277px,(min-width: 1536px) 277px, 358px"
+                  src={item.imageurl}
+                  style={{ objectFit: "cover" }}
+                  quality={75}
+                  alt={item.imagealt}
+                  priority
+                />{" "}
+              </div>
+              {/* <img
                 className="h-[75vw] object-cover w-full pb-4 lg:h-[12rem] xl:h-[13rem] md:h-[17rem] sm:h-[29rem]"
                 src={item.imageurl}
                 alt={item.imagealt}
-              />
+              /> */}
             </Link>
             <Link
-              href={`/${item.section !== "null" ? item.section.toLowerCase() + "/" : ""}${
-                item.subsection !== "null" ? item.subsection.toLowerCase() + "/" : ""
+              href={`/${
+                item.section !== "null" ? item.section.toLowerCase() + "/" : ""
               }${
-                item.subsubsection !== "null" ? item.subsubsection.toLowerCase() + "/" : ""
+                item.subsection !== "null"
+                  ? item.subsection.toLowerCase() + "/"
+                  : ""
+              }${
+                item.subsubsection !== "null"
+                  ? item.subsubsection.toLowerCase() + "/"
+                  : ""
               }`}
             >
-              <h1 className="text-sm text-blue-600 font-semibold pb-2 tracking-wider">
+              <h1 className="text-sm text-blue-600 font-semibold pb-2 tracking-wider pt-4">
                 {DeSlugify(item.subsection)}
               </h1>
             </Link>
 
             <Link
-              href={`/${item.section !== "null" ? item.section.toLowerCase() + "/" : ""}${
-                item.subsection !== "null" ? item.subsection.toLowerCase() + "/" : ""
+              href={`/${
+                item.section !== "null" ? item.section.toLowerCase() + "/" : ""
               }${
-                item.subsubsection !== "null" ? item.subsubsection.toLowerCase() + "/" : ""
+                item.subsection !== "null"
+                  ? item.subsection.toLowerCase() + "/"
+                  : ""
+              }${
+                item.subsubsection !== "null"
+                  ? item.subsubsection.toLowerCase() + "/"
+                  : ""
               }${item.title.toLowerCase()}`}
             >
               <h2 className="font-semibold">{DeSlugify(item.title)}</h2>

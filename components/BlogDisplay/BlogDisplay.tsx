@@ -5,6 +5,7 @@ import CopyBtn from "../ClientComponents/CopyBtn";
 import ShareBtn from "../ClientComponents/ShareBtn";
 import DeSlugify from "@/libs/DeSlugify";
 import MarkdownComponent from "../Markdown";
+import Image from "next/image";
 
 interface JsonValue {
   [key: string]: any;
@@ -51,11 +52,24 @@ function BlogDisplay({ decodedslug, currentPost, posts, latposts }: BlogDisp) {
       <div>
         <div>
           <div>
-            <img
+            <div className="pb-4 px-4 xl:px-0">
+              <div className="  h-[17rem] object-cover  md:h-[21rem] lg:h-[31.5rem] xl:h-[39.5rem] 2xl:h-[38rem] w-full sm:h-[29.5rem]  relative">
+                <Image
+                  fill
+                  sizes="(min-width: 640px) 640px,(min-width: 768px) 435px,(min-width: 1024px) 691px,(min-width: 1280px) 867px,(min-width: 1536px) 835px, 390px"
+                  src={currentPost.imageurl}
+                  style={{ objectFit: "cover" }}
+                  quality={75}
+                  alt={currentPost.imagealt}
+                  priority
+                />
+              </div>
+            </div>
+            {/* <img
               className="px-4 pb-4 h-[17rem] object-cover  md:h-[21rem] lg:h-[31.5rem] xl:h-[39.5rem] 2xl:h-[38rem] w-full sm:h-[29.5rem] xl:px-0"
               src={currentPost.imageurl}
               alt={currentPost.imagealt}
-            />
+            /> */}
             <Link
               href={`/${
                 currentPost.section !== "null" ? currentPost.section + "/" : ""
@@ -69,7 +83,7 @@ function BlogDisplay({ decodedslug, currentPost, posts, latposts }: BlogDisp) {
                   : ""
               }`}
             >
-              <h1 className="font-semibold  mx-4 pb-2 text-sm tracking-wider text-[#004ff2] hidden md:flex xl:mx-0">
+              <h1 className="font-semibold   mx-4 pb-2 text-sm tracking-wider text-[#004ff2] hidden md:flex xl:mx-0">
                 {DeSlugify(
                   decodedslug[decodedslug.length - 2]
                 )[0].toUpperCase() +
@@ -143,12 +157,23 @@ function BlogDisplay({ decodedslug, currentPost, posts, latposts }: BlogDisp) {
                 )}
                 {contentItem.url == "null" || contentItem.url == null ? null : (
                   <div className=" flex flex-col gap-2">
-                    <img
+                    <div className=" h-[17rem] object-contain md:h-[21rem] lg:h-[31.5rem] xl:h-[39.5rem] sm:h-[28.5rem] 2xl:h-[38rem] relative">
+                      <Image
+                        fill
+                        sizes="(min-width: 640px) 608px,(min-width: 768px) 403px,(min-width: 1024px) 659px,(min-width: 1280px) 867px,(min-width: 1536px) 835px, 358px"
+                        src={contentItem.url}
+                        style={{ objectFit: "cover" }}
+                        quality={75}
+                        alt={contentItem.alt}
+                        priority
+                      />
+                    </div>
+                    {/* <img
                       // className="h-[17rem] object-contain md:h-[21rem] lg:h-[31.5rem] xl:h-[39.5rem] sm:h-[28.5rem] 2xl:h-[38rem]"
                       className="max-h-[17rem] object-contain md:max-h-[21rem] lg:max-h-[31.5rem] xl:max-h-[39.5rem] sm:max-h-[28.5rem] 2xl:max-h-[38rem]"
                       src={contentItem.url}
                       alt=""
-                    />
+                    /> */}
                     <p className="text-gray-500 font-light text-sm">
                       {contentItem.alt} | Image: Supplied
                     </p>
@@ -189,11 +214,22 @@ function BlogDisplay({ decodedslug, currentPost, posts, latposts }: BlogDisp) {
                         : ""
                     }${item.title.toLowerCase()}`}
                   >
-                    <img
+                    <div className="w-full h-[75px] relative">
+                      <Image
+                        fill
+                        sizes="100px"
+                        src={item.imageurl}
+                        style={{ objectFit: "cover" }}
+                        quality={75}
+                        alt={item.imagealt}
+                        priority
+                      />
+                    </div>
+                    {/* <img
                       className="object-cover w-full h-[75px]"
                       src={item.imageurl}
                       alt=""
-                    />
+                    /> */}
                   </Link>
                   <div className="flex flex-col gap-2 md:gap-2 w-full">
                     {item.subsubsection ? (
@@ -275,7 +311,7 @@ function BlogDisplay({ decodedslug, currentPost, posts, latposts }: BlogDisp) {
       </div>
       <div className="bg-[#eeeff1] py-8 px-4 md:bg-[#ffffff] xl:pr-0">
         <h1 className="text-lg font-semibold text-center pb-4">
-          Related Stories
+          Related Storiesxx
         </h1>
         <div className="flex flex-col gap-4">
           {posts?.map((item, i) => {
@@ -296,11 +332,22 @@ function BlogDisplay({ decodedslug, currentPost, posts, latposts }: BlogDisp) {
                       : ""
                   }${item.title.toLowerCase()}`}
                 >
-                  <img
+                  <div className="w-full h-[75px] relative">
+                    <Image
+                      fill
+                      sizes="100px"
+                      src={item.imageurl}
+                      style={{ objectFit: "cover" }}
+                      quality={75}
+                      alt={item.imagealt}
+                      priority
+                    />
+                  </div>
+                  {/* <img
                     className="object-cover w-full h-[75px]"
                     src={item.imageurl}
                     alt=""
-                  />
+                  /> */}
                 </Link>
                 <div className="flex flex-col gap-2 md:gap-2 w-full">
                   {item.subsubsection ? (
