@@ -311,7 +311,7 @@ function BlogDisplay({ decodedslug, currentPost, posts, latposts }: BlogDisp) {
       </div>
       <div className="bg-[#eeeff1] py-8 px-4 md:bg-[#ffffff] xl:pr-0">
         <h1 className="text-lg font-semibold text-center pb-4">
-          Related Storiesxx
+          Related Stories
         </h1>
         <div className="flex flex-col gap-4">
           {posts?.map((item, i) => {

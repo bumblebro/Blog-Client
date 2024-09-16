@@ -37,6 +37,8 @@ type SEOType = {
   secondaryKeywords: string[];
 };
 
+export const revalidate = 120;
+
 export async function generateStaticParams() {
   const sluglayer = await GenerateSlugs(subSections);
 
