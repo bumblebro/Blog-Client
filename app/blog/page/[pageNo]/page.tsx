@@ -14,6 +14,8 @@ interface params {
     pageNo: Number;
   };
 }
+
+
 export async function generateStaticParams() {
   const response = await GETBLOG({ pageNo: "1" });
   const totalpage = response.metaData.totalPages;
@@ -24,7 +26,7 @@ export async function generateStaticParams() {
     });
   }
   console.log(`blogpageslug`, arr.length);
-  return arr;
+  return arr.slice(0, 5);
 }
 
 export async function generateMetadata({ params }: params): Promise<Metadata> {
