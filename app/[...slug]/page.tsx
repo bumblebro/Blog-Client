@@ -37,7 +37,6 @@ type SEOType = {
   secondaryKeywords: string[];
 };
 
-
 export async function generateStaticParams() {
   const sluglayer = await GenerateSlugs(subSections);
 
@@ -90,7 +89,7 @@ export async function generateStaticParams() {
     }
     console.log(`sluglayer`, sluglayer.length);
     console.log(`paramsArray`, paramsArray.slice(0, 5).length);
-    return [...sluglayer.slice(0, 5), ...paramsArray.slice(0, 5)];
+    return [...sluglayer, ...paramsArray.slice(0, 700)];
   } catch (error) {
     // console.error("Error fetching blogs:", error);
     return [];
