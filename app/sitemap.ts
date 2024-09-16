@@ -58,7 +58,7 @@ async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // Append to params array
     paramsArray = [...paramsArray, ...titleslug];
     page++; // Move to the next page
-    console.log(`paramsarray`, paramsArray);
+    // console.log(`paramsarray`, paramsArray);
   }
 
   // const allblog = await GETBLOGALL();
