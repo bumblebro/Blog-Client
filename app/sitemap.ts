@@ -6,6 +6,8 @@ import GETBLOGALL from "./api/blogsall/GETBLOGALL";
 import { Blogs } from "@prisma/client";
 import { url } from "inspector";
 
+export const revalidate = 86400; // 1 day in seconds
+
 async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const response = await GETBLOG({ pageNo: "1" });
   const totalpage = response.metaData.totalPages;
@@ -14,6 +16,7 @@ async function sitemap(): Promise<MetadataRoute.Sitemap> {
   for (let i = 1; i <= totalpage; i++) {
     blogslug.push({
       url: `${process.env.NEXT_PUBLIC_BASE_API_URL}/blog/page/${i}`,
+      lastModified: new Date(),
     });
   }
 
@@ -25,6 +28,7 @@ async function sitemap(): Promise<MetadataRoute.Sitemap> {
     });
     return {
       url: `${process.env.NEXT_PUBLIC_BASE_API_URL}${str.toLowerCase()}`,
+      lastModified: new Date(),
     };
   });
 
@@ -48,11 +52,13 @@ async function sitemap(): Promise<MetadataRoute.Sitemap> {
       ).toLowerCase()}/${encodeURIComponent(
         item.subsubsection
       ).toLowerCase()}/${encodeURIComponent(item.title).toLowerCase()}`,
+      lastModified: new Date(),
     }));
 
     // Append to params array
     paramsArray = [...paramsArray, ...titleslug];
     page++; // Move to the next page
+    console.log(`paramsarray`, paramsArray);
   }
 
   // const allblog = await GETBLOGALL();
