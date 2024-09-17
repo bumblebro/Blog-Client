@@ -37,6 +37,7 @@ function BlogList({ posts }: posts) {
                   quality={75}
                   alt={item.imagealt}
                   priority
+                  placeholder="blur"
                 />{" "}
               </div>
               {/* <img
