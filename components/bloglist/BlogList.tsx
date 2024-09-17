@@ -1,5 +1,5 @@
 import DeSlugify from "@/libs/DeSlugify";
-import getBase64 from "@/libs/getBase64";
+import { shimmer, toBase64 } from "@/libs/Shimmer";
 import { Blogs } from "@prisma/client";
 import Image from "next/image";
 import Link from "next/link";
@@ -14,8 +14,8 @@ function BlogList({ posts }: posts) {
   return (
     <div className="  mx-auto mb-10   w-full px-4">
       <div className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-4 lg:gap-4   xl:max-w-[73rem] mx-auto w-full lg:gap-x-5 xl:gap-y-14">
-        {posts.map(async (item, index) => {
-          const myBlurDataUrl = await getBase64(item.imageurl);
+        {posts.map((item, index) => {
+          // const myBlurDataUrl = await getBase64(item.imageurl);
 
           return (
             <div key={index} className="pt-4 ">
@@ -43,8 +43,11 @@ function BlogList({ posts }: posts) {
                     quality={75}
                     alt={item.imagealt}
                     priority
-                    placeholder="blur"
-                    blurDataURL={myBlurDataUrl}
+                    placeholder={`data:image/svg+xml;base64,${toBase64(
+                      shimmer(300, 300)
+                    )}`}
+
+                    // blurDataURL={myBlurDataUrl}
                   />{" "}
                 </div>
                 {/* <img
