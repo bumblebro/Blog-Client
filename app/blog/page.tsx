@@ -28,70 +28,63 @@ async function Blog({ searchParams }: { searchParams: { pageNo: string } }) {
   let hasNextPage = false;
   let totalBlogs = 0;
 
-  if (searchParams.pageNo) {
-    // const res = await fetch(
-    //   `${process.env.NEXT_PUBLIC_BASE_API_URL}/api/blogs?pageNo=${searchParams.pageNo}`,
-    //   {
-    //     method: "GET",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //   }
-    // );
-    const response = await GETBLOG({ pageNo: searchParams.pageNo });
+  // if (searchParams.pageNo) {
+  //   // const res = await fetch(
+  //   //   `${process.env.NEXT_PUBLIC_BASE_API_URL}/api/blogs?pageNo=${searchParams.pageNo}`,
+  //   //   {
+  //   //     method: "GET",
+  //   //     headers: {
+  //   //       "Content-Type": "application/json",
+  //   //     },
+  //   //   }
+  //   // );
+  //   const response = await GETBLOG({ pageNo: searchParams.pageNo });
 
-    // const response = await res.json();
-    if (response) {
-      posts = response.blogs;
-      pageNo = searchParams.pageNo;
-      totalPages = response.metaData.totalPages;
-      hasNextPage = response.metaData.hasNextPage;
-      totalBlogs = response.metaData.totalBlogs;
-    }
-  } else {
-    // const res = await fetch(
-    //   `${process.env.NEXT_PUBLIC_BASE_API_URL}/api/blogs?pageNo=${"1"}`,
-    //   {
-    //     method: "GET",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //   }
-    // );
-    // const response = await res.json();
-    const response = await GETBLOG({ pageNo: "1" });
+  //   // const response = await res.json();
+  //   if (response) {
+  //     posts = response.blogs;
+  //     pageNo = searchParams.pageNo;
+  //     totalPages = response.metaData.totalPages;
+  //     hasNextPage = response.metaData.hasNextPage;
+  //     totalBlogs = response.metaData.totalBlogs;
+  //   }
+  // } else {
+  // const res = await fetch(
+  //   `${process.env.NEXT_PUBLIC_BASE_API_URL}/api/blogs?pageNo=${"1"}`,
+  //   {
+  //     method: "GET",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //   }
+  // );
+  // const response = await res.json();
+  const response = await GETBLOG({ pageNo: "1" });
 
-    if (response) {
-      posts = response.blogs;
-      pageNo = "1";
-      totalPages = response.metaData.totalPages;
-      hasNextPage = response.metaData.hasNextPage;
-      totalBlogs = response.metaData.totalBlogs;
-    }
+  if (response) {
+    posts = response.blogs;
+    pageNo = "1";
+    totalPages = response.metaData.totalPages;
+    hasNextPage = response.metaData.hasNextPage;
+    totalBlogs = response.metaData.totalBlogs;
   }
 
   return (
     <>
-      {sidebar ? (
-        <Sidebar />
-      ) : (
-        <>
-          <div className="mt-28 px-4">
-            <h1 className="text-center  text-2xl font-semibold tracking-wider pb-4">
-              The Latest News - Page 1
-            </h1>
-            <h1 className="text-center  text-sm font-semibold tracking-wider">
-              {totalBlogs} Latest Posts Articles Published
-            </h1>
-            <BlogList posts={posts || []} />
-            <Paginationblog
-              pageNo={pageNo}
-              totalPages={totalPages}
-              hasNextPage={hasNextPage}
-            />
-          </div>
-        </>
-      )}
+      <div className="mt-28 px-4">
+        <h1 className="text-center  text-2xl font-semibold tracking-wider pb-4">
+          The Latest News - Page 1
+        </h1>
+        <h1 className="text-center  text-sm font-semibold tracking-wider">
+          {totalBlogs} Latest Posts Articles Published
+        </h1>
+        <BlogList posts={posts || []} />
+        <Paginationblog
+          pageNo={pageNo}
+          totalPages={totalPages}
+          hasNextPage={hasNextPage}
+        />
+      </div>
     </>
   );
 }
