@@ -1,9 +1,5 @@
 import BlogList from "@/components/bloglist/BlogList";
-import Category from "@/components/category/Category";
-import Footer from "@/components/footer/Footer";
-import Navbar from "@/components/navbar/Navbar";
 import Paginationblog from "@/components/pagination/Paginationblog";
-import Sidebar from "@/components/sidebar/Sidebar";
 import { Blogs } from "@prisma/client";
 import GETBLOG from "./api/blogs/GETBLOG";
 import FeaturedPost from "@/components/featuredPost/FeaturedPost";
