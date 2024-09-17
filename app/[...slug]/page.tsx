@@ -123,6 +123,8 @@ export async function generateMetadata({ params }: params): Promise<Metadata> {
   );
 
   if (decodedslug.length < 3) {
+    const url = `${decodedslug.slice(0, decodedslug.length).join("/")}`;
+
     return {
       title: ` 
       ${
@@ -134,12 +136,12 @@ export async function generateMetadata({ params }: params): Promise<Metadata> {
       )}, ${categoryList?.map((item) => DeSlugify(` ${item}`))} & More`,
       metadataBase: new URL(`${process.env.NEXT_PUBLIC_BASE_API_URL}`),
       alternates: {
-        canonical: `/${decodedslug[0] && `/${decodedslug[0]}`}${
-          decodedslug[1] && `/${decodedslug[1]}`
-        }`,
+        canonical: `/${url}`,
       },
     };
   } else if (decodedslug.length === 3) {
+    const url = `${decodedslug.slice(0, decodedslug.length).join("/")}`;
+
     return {
       title: `${
         DeSlugify(decodedslug[decodedslug.length - 1])[0].toUpperCase() +
@@ -150,13 +152,13 @@ export async function generateMetadata({ params }: params): Promise<Metadata> {
       }`,
       metadataBase: new URL(`${process.env.NEXT_PUBLIC_BASE_API_URL}`),
       alternates: {
-        canonical: `/${decodedslug[0] && `/${decodedslug[0]}`}${
-          decodedslug[1] && `/${decodedslug[1]}`
-        }${decodedslug[2] && `/${decodedslug[2]}`}`,
+        canonical: `${url}`,
       },
     };
   } else {
     try {
+      const url = `${decodedslug.slice(0, decodedslug.length).join("/")}`;
+
       const response = await GETBLOGPOST({
         title: decodedslug[decodedslug.length - 1],
       });
@@ -185,11 +187,7 @@ export async function generateMetadata({ params }: params): Promise<Metadata> {
         metadataBase: new URL(`${process.env.NEXT_PUBLIC_BASE_API_URL}`),
 
         alternates: {
-          canonical: `/${decodedslug[0] && `/${decodedslug[0]}`}${
-            decodedslug[1] && `/${decodedslug[1]}`
-          }${decodedslug[2] && `/${decodedslug[2]}`}${
-            decodedslug[3] && `/${decodedslug[3]}`
-          }`,
+          canonical: `/${url}`,
         },
       };
     } catch (e) {
