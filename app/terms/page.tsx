@@ -2,6 +2,10 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Terms and Conditions",
+  metadataBase: new URL(`${process.env.NEXT_PUBLIC_BASE_API_URL}`),
+  alternates: {
+    canonical: "/terms",
+  },
 };
 
 function page() {
@@ -25,19 +29,20 @@ function page() {
 
       <p>
         The following terminology applies to these Terms and Conditions, Privacy
-        Statement and Disclaimer Notice and all Agreements: &quot;Client&quot;, &quot;You&quot; and
-        &quot;Your&quot; refers to you, the person log on this website and compliant to
-        the Company’s terms and conditions. &quot;The Company&quot;, &quot;Ourselves&quot;, &quot;We&quot;,
-        &quot;Our&quot; and &quot;Us&quot;, refers to our Company. &quot;Party&quot;, &quot;Parties&quot;, or &quot;Us&quot;,
-        refers to both the Client and ourselves. All terms refer to the offer,
-        acceptance and consideration of payment necessary to undertake the
-        process of our assistance to the Client in the most appropriate manner
-        for the express purpose of meeting the Client’s needs in respect of
-        provision of the Company’s stated services, in accordance with and
-        subject to, prevailing law of Netherlands. Any use of the above
-        terminology or other words in the singular, plural, capitalization
-        and/or he/she or they, are taken as interchangeable and therefore as
-        referring to same.
+        Statement and Disclaimer Notice and all Agreements: &quot;Client&quot;,
+        &quot;You&quot; and &quot;Your&quot; refers to you, the person log on
+        this website and compliant to the Company’s terms and conditions.
+        &quot;The Company&quot;, &quot;Ourselves&quot;, &quot;We&quot;,
+        &quot;Our&quot; and &quot;Us&quot;, refers to our Company.
+        &quot;Party&quot;, &quot;Parties&quot;, or &quot;Us&quot;, refers to
+        both the Client and ourselves. All terms refer to the offer, acceptance
+        and consideration of payment necessary to undertake the process of our
+        assistance to the Client in the most appropriate manner for the express
+        purpose of meeting the Client’s needs in respect of provision of the
+        Company’s stated services, in accordance with and subject to, prevailing
+        law of Netherlands. Any use of the above terminology or other words in
+        the singular, plural, capitalization and/or he/she or they, are taken as
+        interchangeable and therefore as referring to same.
       </p>
 
       <h3 className="text-lg  font-semibold">Cookies</h3>
