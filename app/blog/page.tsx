@@ -10,9 +10,13 @@ import { Metadata } from "next";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
+    metadataBase: new URL(`${process.env.NEXT_PUBLIC_BASE_API_URL}`),
     title: "Blog",
     description:
       "Enjoy access to the complete Word of Many's archived articles—every post and every page we have ever published.",
+    alternates: {
+      canonical: "/blog",
+    },
   };
 }
 

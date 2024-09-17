@@ -99,7 +99,7 @@ function Category({ decodedslug, totalBlogs }: Category) {
           ))}
         </ul>
       </div>
-      <h1 className="text-sm font-semibold tracking-wider  pt-8">
+      <h1 className="text-sm font-semibold tracking-wider  pt-8  capitalize">
         {totalBlogs} {DeSlugify(decodedslug[decodedslug.length - 1])} Articles
         Published
       </h1>

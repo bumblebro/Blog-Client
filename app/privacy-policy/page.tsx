@@ -2,6 +2,10 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
+  metadataBase: new URL(`${process.env.NEXT_PUBLIC_BASE_API_URL}`),
+  alternates: {
+    canonical: "/privacy-policy",
+  },
 };
 
 function page() {

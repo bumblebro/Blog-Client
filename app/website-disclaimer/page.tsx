@@ -2,6 +2,10 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Disclaimer",
+  metadataBase: new URL(`${process.env.NEXT_PUBLIC_BASE_API_URL}`),
+  alternates: {
+    canonical: "/website-disclaimer",
+  },
 };
 
 function page() {

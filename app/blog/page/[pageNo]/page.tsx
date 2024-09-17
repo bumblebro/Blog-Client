@@ -32,9 +32,13 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: params): Promise<Metadata> {
   return {
+    metadataBase: new URL(`${process.env.NEXT_PUBLIC_BASE_API_URL}`),
     title: `Blog - Page ${params.pageNo}`,
     description:
       "Enjoy access to the complete Word of Many's archived articles—every post and every page we have ever published.",
+    alternates: {
+      canonical: `/blog/page/${params.pageNo}`,
+    },
   };
 }
 
