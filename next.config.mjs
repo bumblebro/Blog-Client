@@ -1,11 +1,26 @@
-/** @type {import('next').NextConfig} */
+// next.config.mjs
+import withPlaiceholder from "@plaiceholder/next";
+
+/**
+ * @type {import('next').NextConfig}
+ */
 const nextConfig = {
-  reactStrictMode: false,
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "**", // Double asterisk allows any subdomain
+        port: "",
+        pathname: "/**", // Allows all paths
+      },
+      {
+        protocol: "http",
+        hostname: "**",
+        port: "",
+        pathname: "/**",
+      },
+    ],
+  },
 };
 
-export default nextConfig;
-
-// const withBundleAnalyzer = require("@next/bundle-analyzer")({
-//   enabled: process.env.ANALYZE === "true",
-// });
-// module.exports = withBundleAnalyzer(nextConfig);
+export default withPlaiceholder(nextConfig);
