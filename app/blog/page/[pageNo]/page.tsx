@@ -15,7 +15,7 @@ interface params {
   };
 }
 
-export const revalidate = 120;
+export const revalidate = 86400;
 
 export async function generateStaticParams() {
   const response = await GETBLOG({ pageNo: "1" });
