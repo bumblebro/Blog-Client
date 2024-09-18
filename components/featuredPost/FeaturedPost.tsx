@@ -43,7 +43,7 @@ function FeaturedPost({ posts }: posts) {
           />{" "}
         </Link>{" "}
         <div className="bg-black text-white left-[5%]  text-center  w-[90%] py-6 absolute top-[80%] px-6 md:relative md:h-full md:top-0 md:flex md:flex-col md:justify-center md:left-0 md:w-full   ">
-          {/* <h1 className="pb-3 text-blue-600 font-semibold md:text-lg md:pb-5">
+          {/* <h1 className="pb-3 text-[#6594F1] font-semibold md:text-lg md:pb-5">
             {posts[randomNum].section
               ? posts[randomNum].section
               : posts[randomNum].subsection
@@ -67,7 +67,7 @@ function FeaturedPost({ posts }: posts) {
               }`}
             >
               {" "}
-              <h1 className="pb-3 text-blue-600 font-semibold md:text-lg md:pb-5">
+              <h1 className="pb-3 text-[#6594F1] font-semibold md:text-lg md:pb-5">
                 {posts[randomNum].subsubsection?.replace(/-/g, " ")}
               </h1>
             </Link>
@@ -83,7 +83,7 @@ function FeaturedPost({ posts }: posts) {
                   : ""
               }`}
             >
-              <h1 className="pb-3 text-blue-600 font-semibold md:text-lg md:pb-5">
+              <h1 className="pb-3 text-[#6594F1] font-semibold md:text-lg md:pb-5">
                 {posts[randomNum].subsection?.replace(/-/g, " ")}
               </h1>
             </Link>
@@ -96,7 +96,7 @@ function FeaturedPost({ posts }: posts) {
               }`}
             >
               {" "}
-              <h1 className="pb-3 text-blue-600 font-semibold md:text-lg md:pb-5">
+              <h1 className="pb-3 text-[#6594F1] font-semibold md:text-lg md:pb-5">
                 {posts[randomNum]?.section?.replace(/-/g, " ")}
               </h1>
             </Link>
