@@ -6,6 +6,7 @@ import ShareBtn from "../ClientComponents/ShareBtn";
 import DeSlugify from "@/libs/DeSlugify";
 import MarkdownComponent from "../Markdown";
 import Image from "next/image";
+import { shimmer, toBase64 } from "@/libs/Shimmer";
 
 interface JsonValue {
   [key: string]: any;
@@ -62,6 +63,9 @@ function BlogDisplay({ decodedslug, currentPost, posts, latposts }: BlogDisp) {
                   quality={75}
                   alt={currentPost.imagealt}
                   priority
+                  placeholder={`data:image/svg+xml;base64,${toBase64(
+                    shimmer(300, 300)
+                  )}`}
                 />
               </div>
             </div>
@@ -155,17 +159,23 @@ function BlogDisplay({ decodedslug, currentPost, posts, latposts }: BlogDisp) {
                     <MarkdownComponent text={contentItem.description} />
                   </div>
                 )}
-                {contentItem.url == "null" || contentItem.url == null ? null : (
+                {contentItem.url == "null" ||
+                contentItem.url == null ||
+                contentItem.alt == "null" ||
+                contentItem.alt == null ? null : (
                   <div className=" flex flex-col gap-2">
-                    <div className=" h-[17rem] object-contain md:h-[21rem] lg:h-[31.5rem] xl:h-[39.5rem] sm:h-[28.5rem] 2xl:h-[38rem] relative">
+                    <div className=" h-[17rem] object-contain md:h-[21rem] lg:h-[31.5rem] xl:h-[39.5rem] sm:h-[28.5rem] 2xl:h-[38rem] relative w-full">
                       <Image
                         fill
                         sizes="(min-width: 640px) 608px,(min-width: 768px) 403px,(min-width: 1024px) 659px,(min-width: 1280px) 867px,(min-width: 1536px) 835px, 358px"
                         src={contentItem.url}
-                        style={{ objectFit: "cover" }}
+                        style={{ objectFit: "contain" }}
                         quality={75}
                         alt={contentItem.alt}
                         priority
+                        placeholder={`data:image/svg+xml;base64,${toBase64(
+                          shimmer(300, 300)
+                        )}`}
                       />
                     </div>
                     {/* <img
@@ -223,6 +233,9 @@ function BlogDisplay({ decodedslug, currentPost, posts, latposts }: BlogDisp) {
                         quality={75}
                         alt={item.imagealt}
                         priority
+                        placeholder={`data:image/svg+xml;base64,${toBase64(
+                          shimmer(300, 300)
+                        )}`}
                       />
                     </div>
                     {/* <img
@@ -341,6 +354,9 @@ function BlogDisplay({ decodedslug, currentPost, posts, latposts }: BlogDisp) {
                       quality={75}
                       alt={item.imagealt}
                       priority
+                      placeholder={`data:image/svg+xml;base64,${toBase64(
+                        shimmer(300, 300)
+                      )}`}
                     />
                   </div>
                   {/* <img
