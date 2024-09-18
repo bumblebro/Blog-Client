@@ -44,8 +44,9 @@ function BlogList({ posts }: posts) {
                     // loading="eager"
                     // fetchPriority="high"
                     quality={55}
-                    priority
-                    loading="eager"
+                    priority={false}
+                    loading="lazy"
+                    // objectFit="contain"
                     // placeholder={`data:image/svg+xml;base64,${toBase64(
                     //   shimmer(300, 300)
                     // )}`}
