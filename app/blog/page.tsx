@@ -1,9 +1,5 @@
-import { useEffect, useState } from "react";
 import { Blogs } from "@prisma/client";
 import BlogList from "@/components/bloglist/BlogList";
-import Navbar from "@/components/navbar/Navbar";
-import Sidebar from "@/components/sidebar/Sidebar";
-import Footer from "@/components/footer/Footer";
 import Paginationblog from "@/components/pagination/Paginationblog";
 import GETBLOG from "../api/blogs/GETBLOG";
 import { Metadata } from "next";
