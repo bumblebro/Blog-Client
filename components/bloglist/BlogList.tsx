@@ -43,13 +43,13 @@ function BlogList({ posts }: posts) {
                     alt={item.imagealt}
                     // loading="eager"
                     // fetchPriority="high"
-                    quality={55}
+                    quality={75}
                     priority={false}
                     loading="lazy"
                     // objectFit="contain"
-                    placeholder={`data:image/svg+xml;base64,${toBase64(
-                      shimmer(300, 300)
-                    )}`}
+                    // placeholder={`data:image/svg+xml;base64,${toBase64(
+                    //   shimmer(300, 300)
+                    // )}`}
 
                     // blurDataURL={myBlurDataUrl}
                   />{" "}
