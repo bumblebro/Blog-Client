@@ -10,6 +10,7 @@ export default async function GETBLOGALL(page = 0, pageSize = 100) {
       subsection: true,
       subsubsection: true,
       title: true,
+      creationDate: true,
     },
     skip: page * pageSize,
     take: pageSize,

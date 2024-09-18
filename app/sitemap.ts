@@ -52,7 +52,7 @@ async function sitemap(): Promise<MetadataRoute.Sitemap> {
       ).toLowerCase()}/${encodeURIComponent(
         item.subsubsection
       ).toLowerCase()}/${encodeURIComponent(item.title).toLowerCase()}`,
-      lastModified: new Date(),
+      lastModified: item.creationDate,
     }));
 
     // Append to params array
