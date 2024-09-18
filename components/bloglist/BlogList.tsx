@@ -47,9 +47,9 @@ function BlogList({ posts }: posts) {
                     priority={false}
                     loading="lazy"
                     // objectFit="contain"
-                    // placeholder={`data:image/svg+xml;base64,${toBase64(
-                    //   shimmer(300, 300)
-                    // )}`}
+                    placeholder={`data:image/svg+xml;base64,${toBase64(
+                      shimmer(300, 300)
+                    )}`}
 
                     // blurDataURL={myBlurDataUrl}
                   />{" "}
