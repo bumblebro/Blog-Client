@@ -39,7 +39,7 @@ function BlogList({ posts }: posts) {
                     sizes="(min-width: 640px) 608px,(min-width: 768px) 362px,(min-width: 1024px) 233px,(min-width: 1280px) 277px,(min-width: 1536px) 277px, 358px"
                     src={item.imageurl}
                     style={{ objectFit: "cover" }}
-                    quality={1}
+                    // quality={1}
                     alt={item.imagealt}
                     priority
                     placeholder={`data:image/svg+xml;base64,${toBase64(

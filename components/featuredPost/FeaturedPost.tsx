@@ -36,7 +36,7 @@ function FeaturedPost({ posts }: posts) {
             style={{ objectFit: "cover" }}
             quality={75}
             alt={posts[randomNum]?.imagealt}
-            priority
+            // priority
             placeholder={`data:image/svg+xml;base64,${toBase64(
               shimmer(300, 300)
             )}`}
