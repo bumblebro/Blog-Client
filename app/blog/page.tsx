@@ -8,7 +8,7 @@ import Paginationblog from "@/components/pagination/Paginationblog";
 import GETBLOG from "../api/blogs/GETBLOG";
 import { Metadata } from "next";
 
-// export const revalidate = 86400;
+export const revalidate = 86400;
 
 export async function generateMetadata(): Promise<Metadata> {
   return {

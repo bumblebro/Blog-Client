@@ -5,7 +5,7 @@ import GETBLOG from "./api/blogs/GETBLOG";
 import FeaturedPost from "@/components/featuredPost/FeaturedPost";
 import { Metadata } from "next";
 
-// export const revalidate = 86400;
+export const revalidate = 86400;
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
