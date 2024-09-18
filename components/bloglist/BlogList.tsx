@@ -41,9 +41,11 @@ function BlogList({ posts }: posts) {
                     style={{ objectFit: "cover" }}
                     // quality={1}
                     alt={item.imagealt}
+                    // loading="eager"
+                    // fetchPriority="high"
+                    quality={55}
+                    priority
                     loading="eager"
-                    fetchPriority="high"
-                    // priority
                     placeholder={`data:image/svg+xml;base64,${toBase64(
                       shimmer(300, 300)
                     )}`}
