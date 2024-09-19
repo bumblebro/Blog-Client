@@ -5,7 +5,7 @@ export default function NotFound() {
     <main className="flex  flex-col items-center justify-center gap-2 h-screen">
       <h2 className="text-xl font-semibold ">404 Not Found</h2>
       <p className="leading-[1.7rem] font-[330]">
-        Could not find the requested invoice.
+        Could not find the requested page.
       </p>
       <Link
         href="/"
