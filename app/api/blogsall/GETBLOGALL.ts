@@ -14,7 +14,7 @@ export default async function GETBLOGALL(page = 0, pageSize = 100) {
     },
     skip: page * pageSize,
     take: pageSize,
-    cacheStrategy: { ttl: 60 },
+    cacheStrategy: { ttl: 86400 },
   });
   return blogs;
 }
