@@ -57,12 +57,12 @@ export default async function GETBLOGSLAYER({
       skip, // Number of records to skip
       take, // Number of records to take
       where: whereClause,
-      cacheStrategy: { ttl: 60 },
+      cacheStrategy: { ttl: 86400 },
     });
 
     const totalBlogs = await prisma.blogs.count({
       where: whereClause,
-      cacheStrategy: { ttl: 60 },
+      cacheStrategy: { ttl: 86400 },
     });
     return {
       blogs: blogs,

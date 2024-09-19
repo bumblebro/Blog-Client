@@ -16,7 +16,7 @@ export default async function GETBLOGPOST({ title }: { title: string }) {
         },
       },
 
-      cacheStrategy: { ttl: 60 },
+      cacheStrategy: { ttl: 86400 },
     });
     return blogs;
   } catch (error) {
