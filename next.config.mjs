@@ -6,6 +6,7 @@
 const nextConfig = {
   images: {
     remotePatterns: [
+      { unoptimized: true },
       {
         protocol: "https",
         hostname: "**", // Double asterisk allows any subdomain
