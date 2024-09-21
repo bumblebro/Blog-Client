@@ -91,7 +91,7 @@ function Category({ decodedslug, totalBlogs }: Category) {
       </p>
       {decodedslug.length < 3 && (
         <div className="overflow-scroll  no-scrollbar w-full xl:max-w-[73rem] ">
-          <ul className="flex items-center text-xs  pt-8 gap-12 justify-center md:gap-16 underline  ">
+          <ul className="flex items-center text-xs  pt-8 gap-12 justify-evenly md:gap-16 underline  ">
             {categoryList.map((item, i) => (
               <Link
                 className=" "
