@@ -73,7 +73,7 @@ export async function generateStaticParams() {
     }
     console.log(`sluglayer`, sluglayer.length);
     console.log(`paramsArray`, paramsArray.length);
-    return [...sluglayer, ...paramsArray.slice(0, 700)];
+    return [...sluglayer.slice(0,10), ...paramsArray.slice(0, 10)];
   } catch (error) {
     // console.error("Error fetching blogs:", error);
     return [];
