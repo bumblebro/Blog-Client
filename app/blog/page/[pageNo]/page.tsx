@@ -27,7 +27,7 @@ export async function generateStaticParams() {
     });
   }
   console.log(`blogpageslug`, arr.length);
-  return arr.slice(0, 10);
+  return arr;
 }
 
 export async function generateMetadata({ params }: params): Promise<Metadata> {
