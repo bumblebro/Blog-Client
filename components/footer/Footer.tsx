@@ -17,7 +17,7 @@ function Footer() {
             />
             <button
               type="submit"
-              className="bg-[#ee5631] text-black w-full rounded-md py-2 text-center font-semibold md:w-[50%]  2xl:w-[40%] md:rounded-l-none"
+              className="bg-[#ee5631] text-black w-full rounded-md py-2 text-center font-semibold md:w-[50%]  2xl:w-[40%] md:rounded-l-none hover:bg-[#ff8769]"
             >
               Subscribe
             </button>
@@ -27,15 +27,29 @@ function Footer() {
         <div className="flex flex-col  font-normal text-sm gap-4 md:flex-row md:justify-between md:items-center">
           {" "}
           <div className="gap-4 flex flex-col md:text-start">
-            <Link href={"/"}>Home</Link>
-            <Link href={"/about"}>About Us</Link>
-            <Link href={"/advertise"}>Advertise With Us</Link>
-            <Link href={"/contact"}>Contact Us</Link>
+            <Link className="hover:text-[#004ff2]" href={"/"}>
+              Home
+            </Link>
+            <Link className="hover:text-[#004ff2]" href={"/about"}>
+              About Us
+            </Link>
+            <Link className="hover:text-[#004ff2]" href={"/advertise"}>
+              Advertise With Us
+            </Link>
+            <Link className="hover:text-[#004ff2]" href={"/contact"}>
+              Contact Us
+            </Link>
           </div>
           <div className="gap-4 flex flex-col md:text-end">
-            <Link href={"/privacy-policy"}>Privacy Policy</Link>
-            <Link href={"/website-disclaimer"}>Disclaimer</Link>
-            <Link href={"/terms"}>Terms and Conditions</Link>
+            <Link className="hover:text-[#004ff2]" href={"/privacy-policy"}>
+              Privacy Policy
+            </Link>
+            <Link className="hover:text-[#004ff2]" href={"/website-disclaimer"}>
+              Disclaimer
+            </Link>
+            <Link className="hover:text-[#004ff2]" href={"/terms"}>
+              Terms and Conditions
+            </Link>
           </div>
         </div>
         <p className="font-light text-sm italic px-4 text-center">
