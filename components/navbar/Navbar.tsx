@@ -151,12 +151,12 @@ function Navbar() {
           id="navbar-sticky overflow-y-auto h-screen animate-fadein`}
         >
           <h1 className="text-2xl font-semibold py-6">Sections</h1>
-          <div className="grid grid-cols-2 gap-10 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-7">
+          <div className="grid grid-cols-2 gap-10 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-7 ">
             <div>
               <Link
                 onClick={handleSidebar}
                 href={"/tech"}
-                className="font-semibold "
+                className="font-semibold hover:text-[#004ff2] "
               >
                 Tech
               </Link>
@@ -167,6 +167,7 @@ function Navbar() {
                       onClick={handleSidebar}
                       href={`/tech/${item.toLowerCase()}`}
                       key={index}
+                      className="hover:text-[#004ff2]"
                     >
                       {DeSlugify(item)}
                     </Link>
@@ -178,7 +179,7 @@ function Navbar() {
               <Link
                 onClick={handleSidebar}
                 href={"/fashion"}
-                className="font-semibold "
+                className="font-semibold hover:text-[#004ff2]"
               >
                 Fashion
               </Link>
@@ -189,6 +190,7 @@ function Navbar() {
                       onClick={handleSidebar}
                       href={`/fashion/${item.toLowerCase()}`}
                       key={index}
+                      className="hover:text-[#004ff2]"
                     >
                       {DeSlugify(item)}
                     </Link>
@@ -200,7 +202,7 @@ function Navbar() {
               <Link
                 onClick={handleSidebar}
                 href={"/rides"}
-                className="font-semibold "
+                className="font-semibold hover:text-[#004ff2]"
               >
                 Rides
               </Link>
@@ -211,6 +213,7 @@ function Navbar() {
                       onClick={handleSidebar}
                       href={`/rides/${item.toLowerCase()}`}
                       key={index}
+                      className="hover:text-[#004ff2]"
                     >
                       {DeSlugify(item)}
                     </Link>
@@ -222,7 +225,7 @@ function Navbar() {
               <Link
                 onClick={handleSidebar}
                 href={"/lifestyle"}
-                className="font-semibold "
+                className="font-semibold  hover:text-[#004ff2]"
               >
                 Lifestyle
               </Link>
@@ -233,6 +236,7 @@ function Navbar() {
                       onClick={handleSidebar}
                       href={`/lifestyle/${item.toLowerCase()}`}
                       key={index}
+                      className="hover:text-[#004ff2]"
                     >
                       {DeSlugify(item)}
                     </Link>
@@ -244,7 +248,7 @@ function Navbar() {
               <Link
                 onClick={handleSidebar}
                 href={"/entertainment"}
-                className="font-semibold "
+                className="font-semibold  hover:text-[#004ff2]"
               >
                 Entertainment
               </Link>
@@ -255,6 +259,7 @@ function Navbar() {
                       onClick={handleSidebar}
                       href={`/entertainment/${item.toLowerCase()}`}
                       key={index}
+                      className="hover:text-[#004ff2]"
                     >
                       {DeSlugify(item)}
                     </Link>
@@ -266,7 +271,7 @@ function Navbar() {
               <Link
                 onClick={handleSidebar}
                 href={"/living"}
-                className="font-semibold "
+                className="font-semibold hover:text-[#004ff2]"
               >
                 Living
               </Link>
@@ -277,6 +282,7 @@ function Navbar() {
                       onClick={handleSidebar}
                       href={`/living/${item.toLowerCase()}`}
                       key={index}
+                      className="hover:text-[#004ff2]"
                     >
                       {DeSlugify(item)}
                     </Link>
@@ -288,7 +294,7 @@ function Navbar() {
               <Link
                 onClick={handleSidebar}
                 href={"/outdoors"}
-                className="font-semibold "
+                className="font-semibold hover:text-[#004ff2]"
               >
                 Outdoors
               </Link>
@@ -299,6 +305,7 @@ function Navbar() {
                       onClick={handleSidebar}
                       href={`/outdoors/${item.toLowerCase()}`}
                       key={index}
+                      className="hover:text-[#004ff2]"
                     >
                       {DeSlugify(item)}
                     </Link>
@@ -310,7 +317,7 @@ function Navbar() {
               <Link
                 onClick={handleSidebar}
                 href={"/news"}
-                className="font-semibold"
+                className="font-semibold hover:text-[#004ff2]"
               >
                 News
               </Link>
@@ -321,6 +328,7 @@ function Navbar() {
                       onClick={handleSidebar}
                       href={`/news/${item.toLowerCase()}`}
                       key={index}
+                      className="hover:text-[#004ff2]"
                     >
                       {DeSlugify(item)}
                     </Link>

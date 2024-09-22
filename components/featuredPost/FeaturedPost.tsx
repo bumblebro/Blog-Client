@@ -67,7 +67,7 @@ function FeaturedPost({ posts }: posts) {
               }`}
             >
               {" "}
-              <h1 className="pb-3 text-[#6594F1] font-semibold md:text-lg md:pb-5">
+              <h1 className="pb-3 text-[#6594F1] font-semibold md:text-lg md:pb-5 hover:text-[#3a8cfb]">
                 {posts[randomNum].subsubsection?.replace(/-/g, " ")}
               </h1>
             </Link>
@@ -83,7 +83,7 @@ function FeaturedPost({ posts }: posts) {
                   : ""
               }`}
             >
-              <h1 className="pb-3 text-[#6594F1] font-semibold md:text-lg md:pb-5">
+              <h1 className="pb-3 text-[#6594F1] font-semibold md:text-lg md:pb-5 hover:text-[#3a8cfb]">
                 {posts[randomNum].subsection?.replace(/-/g, " ")}
               </h1>
             </Link>
@@ -96,7 +96,7 @@ function FeaturedPost({ posts }: posts) {
               }`}
             >
               {" "}
-              <h1 className="pb-3 text-[#6594F1] font-semibold md:text-lg md:pb-5">
+              <h1 className="pb-3 text-[#6594F1] font-semibold md:text-lg md:pb-5 hover:text-[#3a8cfb]">
                 {posts[randomNum]?.section?.replace(/-/g, " ")}
               </h1>
             </Link>
@@ -116,7 +116,7 @@ function FeaturedPost({ posts }: posts) {
                 : ""
             }${posts[randomNum]?.title}`}
           >
-            <h2 className="text-xl font-semibold md:text-3xl">
+            <h2 className="text-xl font-semibold md:text-3xl hover:text-[#004ff2]">
               {posts[randomNum]?.title?.replace(/-/g, " ")}
             </h2>
           </Link>

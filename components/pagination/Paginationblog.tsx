@@ -68,7 +68,7 @@ function Paginationblog({ pageNo = "1", totalPages, hasNextPage }: Props) {
           }`}
           href={`/blog/page/${currentPage - 1}`}
         >
-          <div className="bg-black text-white py-3 px-4 rounded-lg flex  items-center gap-2  md:px-8 tracking-widest">
+          <div className="bg-black text-white py-3 px-4 rounded-lg flex  items-center gap-2  md:px-8 tracking-widest hover:bg-[#004ff2]">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -106,7 +106,12 @@ function Paginationblog({ pageNo = "1", totalPages, hasNextPage }: Props) {
               {page === "..." ? (
                 <span className="text-gray-500">...</span>
               ) : (
-                <Link href={`/blog/page/${page}`}>{page}</Link>
+                <Link
+                  className="hover:text-[#004ff2]"
+                  href={`/blog/page/${page}`}
+                >
+                  {page}
+                </Link>
               )}
             </div>
           ))}
@@ -119,7 +124,7 @@ function Paginationblog({ pageNo = "1", totalPages, hasNextPage }: Props) {
           // href={`/blog/page/${currentPage + 1}`}
           href={`/blog/page/${currentPage + 1}`}
         >
-          <div className="bg-black text-white py-3 px-4 rounded-lg flex  items-center gap-2 md:px-8 tracking-widest">
+          <div className="bg-black text-white py-3 px-4 rounded-lg flex  items-center gap-2 md:px-8 tracking-widest hover:bg-[#004ff2]">
             <p>Next</p>
             <svg
               xmlns="http://www.w3.org/2000/svg"

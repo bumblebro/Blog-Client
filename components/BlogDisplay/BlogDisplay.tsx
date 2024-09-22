@@ -87,7 +87,7 @@ function BlogDisplay({ decodedslug, currentPost, posts, latposts }: BlogDisp) {
                   : ""
               }`}
             >
-              <h1 className="font-semibold   mx-4 pb-2 text-sm tracking-wider text-[#004ff2] hidden md:flex xl:mx-0">
+              <h1 className="font-semibold   mx-4 pb-2 text-sm tracking-wider text-[#004ff2] hidden md:flex xl:mx-0 hover:text-[#3a8cfb]">
                 {DeSlugify(
                   decodedslug[decodedslug.length - 2]
                 )[0].toUpperCase() +
@@ -262,7 +262,7 @@ function BlogDisplay({ decodedslug, currentPost, posts, latposts }: BlogDisp) {
                         }`}
                       >
                         {" "}
-                        <h1 className="text-xs text-[#1750d3] font-semibold tracking-wider">
+                        <h1 className="text-xs text-[#1750d3] font-semibold tracking-wider hover:text-[#3a8cfb]">
                           {DeSlugify(item.subsubsection)}
                         </h1>
                       </Link>
@@ -278,7 +278,7 @@ function BlogDisplay({ decodedslug, currentPost, posts, latposts }: BlogDisp) {
                             : ""
                         }`}
                       >
-                        <h1 className="text-xs text-[#1e50ce] font-semibold tracking-wider">
+                        <h1 className="text-xs text-[#1e50ce] font-semibold tracking-wider hover:text-[#3a8cfb]">
                           {DeSlugify(item.subsection)}
                         </h1>
                       </Link>
@@ -291,7 +291,7 @@ function BlogDisplay({ decodedslug, currentPost, posts, latposts }: BlogDisp) {
                         }`}
                       >
                         {" "}
-                        <h1 className="text-xs text-[#1e50ce] font-semibold tracking-wider">
+                        <h1 className="text-xs text-[#1e50ce] font-semibold tracking-wider hover:text-[#3a8cfb]">
                           {DeSlugify(item.section)}
                         </h1>
                       </Link>
@@ -311,7 +311,7 @@ function BlogDisplay({ decodedslug, currentPost, posts, latposts }: BlogDisp) {
                           : ""
                       }${item.title.toLowerCase()}`}
                     >
-                      <h1 className="text-sm font-semibold line-clamp-2 ">
+                      <h1 className="text-sm font-semibold line-clamp-2  hover:text-[#004ff2]">
                         {DeSlugify(item.title)}
                       </h1>
                     </Link>
@@ -383,7 +383,7 @@ function BlogDisplay({ decodedslug, currentPost, posts, latposts }: BlogDisp) {
                       }`}
                     >
                       {" "}
-                      <h1 className="text-xs text-[#1750d3] font-semibold tracking-wider">
+                      <h1 className="text-xs text-[#1750d3] font-semibold tracking-wider hover:text-[#3a8cfb]">
                         {DeSlugify(item.subsubsection)}
                       </h1>
                     </Link>
@@ -399,7 +399,7 @@ function BlogDisplay({ decodedslug, currentPost, posts, latposts }: BlogDisp) {
                           : ""
                       }`}
                     >
-                      <h1 className="text-xs text-[#1e50ce] font-semibold tracking-wider">
+                      <h1 className="text-xs text-[#1e50ce] font-semibold tracking-wider hover:text-[#3a8cfb]">
                         {DeSlugify(item.subsection)}
                       </h1>
                     </Link>
@@ -412,7 +412,7 @@ function BlogDisplay({ decodedslug, currentPost, posts, latposts }: BlogDisp) {
                       }`}
                     >
                       {" "}
-                      <h1 className="text-xs text-[#1e50ce] font-semibold tracking-wider">
+                      <h1 className="text-xs text-[#1e50ce] font-semibold tracking-wider hover:text-[#3a8cfb]">
                         {DeSlugify(item.section)}
                       </h1>
                     </Link>
@@ -432,7 +432,7 @@ function BlogDisplay({ decodedslug, currentPost, posts, latposts }: BlogDisp) {
                         : ""
                     }${item.title.toLowerCase()}`}
                   >
-                    <h1 className="text-sm font-semibold line-clamp-2 ">
+                    <h1 className="text-sm font-semibold line-clamp-2 hover:text-[#004ff2] ">
                       {DeSlugify(item.title)}
                     </h1>
                   </Link>

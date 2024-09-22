@@ -13,12 +13,12 @@ async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const totalpage = response.metaData.totalPages;
   const blogslug: MetadataRoute.Sitemap = [];
 
-  for (let i = 1; i <= totalpage; i++) {
-    blogslug.push({
-      url: `${process.env.NEXT_PUBLIC_BASE_API_URL}/blog/page/${i}`,
-      lastModified: new Date(),
-    });
-  }
+  // for (let i = 1; i <= totalpage; i++) {
+  //   blogslug.push({
+  //     url: `${process.env.NEXT_PUBLIC_BASE_API_URL}/blog/page/${i}`,
+  //     lastModified: new Date(),
+  //   });
+  // }
 
   const sluglayer = await GenerateSlugs(subSections);
   const categoryslug: MetadataRoute.Sitemap = sluglayer.map((item: any) => {
@@ -90,9 +90,12 @@ async function sitemap(): Promise<MetadataRoute.Sitemap> {
     {
       url: `${process.env.NEXT_PUBLIC_BASE_API_URL}/blog`,
     },
+    {
+      url: `${process.env.NEXT_PUBLIC_BASE_API_URL}/blog/page/1`,
+    },
     ...paramsArray,
     ...categoryslug,
-    ...blogslug,
+    // ...blogslug,
   ];
 }
 

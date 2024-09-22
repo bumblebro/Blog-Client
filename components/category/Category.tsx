@@ -35,7 +35,7 @@ function Category({ decodedslug, totalBlogs }: Category) {
         <ul className="flex items-center text-xs md:text-[14px] ">
           <li className="inline-flex items-center">
             <Link
-              className="inline-flex items-center  font-medium text-gray-500 hover:text-blue-600 "
+              className="inline-flex items-center  font-medium text-gray-500 hover:text-[#3a8cfb]"
               href="/"
             >
               {" "}

@@ -75,7 +75,7 @@ function BlogList({ posts }: posts) {
                     : ""
                 }`}
               >
-                <h1 className="text-sm text-blue-600 font-semibold pb-2 tracking-wider pt-4">
+                <h1 className="text-sm text-[#004ff2] font-semibold pb-2 tracking-wider pt-4 hover:text-[#3a8cfb]">
                   {DeSlugify(item.subsection)}
                 </h1>
               </Link>
@@ -95,7 +95,9 @@ function BlogList({ posts }: posts) {
                     : ""
                 }${item.title.toLowerCase()}`}
               >
-                <h2 className="font-semibold">{DeSlugify(item.title)}</h2>
+                <h2 className="font-semibold hover:text-[#004ff2]">
+                  {DeSlugify(item.title)}
+                </h2>
               </Link>
             </div>
           );
