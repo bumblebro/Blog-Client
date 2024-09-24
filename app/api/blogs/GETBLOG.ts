@@ -16,6 +16,10 @@ export default async function GETBLOG({ pageNo }: { pageNo: string }) {
   const blogs = await prisma.blogs.findMany({
     skip,
     take,
+    orderBy: {
+      // Replace 'createdAt' with the actual name of your date field
+      creationDate: "desc",
+    },
     // cacheStrategy: { ttl: 86400 },
   });
 

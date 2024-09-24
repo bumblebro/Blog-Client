@@ -58,6 +58,10 @@ export default async function GETBLOGSLAYER({
       skip, // Number of records to skip
       take, // Number of records to take
       where: whereClause,
+      orderBy: {
+        // Replace 'createdAt' with the actual name of your date field
+        creationDate: "desc",
+      },
       // cacheStrategy: { ttl: 86400 },
     });
 
