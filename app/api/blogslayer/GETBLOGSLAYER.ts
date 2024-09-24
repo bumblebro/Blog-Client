@@ -3,7 +3,8 @@ import { withAccelerate } from "@prisma/extension-accelerate";
 import { request } from "http";
 import { NextRequest, NextResponse } from "next/server";
 
-const prisma = new PrismaClient().$extends(withAccelerate());
+// const prisma = new PrismaClient().$extends(withAccelerate());
+const prisma = new PrismaClient();
 
 export default async function GETBLOGSLAYER({
   category,
@@ -57,12 +58,12 @@ export default async function GETBLOGSLAYER({
       skip, // Number of records to skip
       take, // Number of records to take
       where: whereClause,
-      cacheStrategy: { ttl: 86400 },
+      // cacheStrategy: { ttl: 86400 },
     });
 
     const totalBlogs = await prisma.blogs.count({
       where: whereClause,
-      cacheStrategy: { ttl: 86400 },
+      // cacheStrategy: { ttl: 86400 },
     });
     return {
       blogs: blogs,

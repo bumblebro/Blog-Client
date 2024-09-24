@@ -1,7 +1,8 @@
 import { PrismaClient } from "@prisma/client";
 import { withAccelerate } from "@prisma/extension-accelerate";
 
-const prisma = new PrismaClient().$extends(withAccelerate());
+// const prisma = new PrismaClient().$extends(withAccelerate());
+const prisma = new PrismaClient();
 
 export default async function GETBLOGALL(page = 0, pageSize = 100) {
   const blogs = await prisma.blogs.findMany({
@@ -14,7 +15,7 @@ export default async function GETBLOGALL(page = 0, pageSize = 100) {
     },
     skip: page * pageSize,
     take: pageSize,
-    cacheStrategy: { ttl: 86400 },
+    // cacheStrategy: { ttl: 86400 },
   });
   return blogs;
 }
