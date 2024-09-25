@@ -103,10 +103,10 @@ function Navbar({
 
   return (
     <nav className="  w-full z-20 top-0 start-0 fixed bg-black h-[72px] md:h-[80px]">
-      <div className="max-w-screen-xl  items-center justify-between mx-auto px-4  py-2 md:py-3 ">
-        <div className="bg-black  grid grid-cols-3   xl:max-w-[73rem] mx-auto  my-auto h-full text-white w-full ">
+      <div className="  items-center justify-between mx-auto  py-2 md:py-3 ">
+        <div className="bg-black  grid grid-cols-3 px-3 xl:px-0 xl:max-w-[73rem] mx-auto  my-auto h-full text-white w-full ">
           {" "}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 ">
             {sidebar ? (
               <button type="submit" title="Button">
                 <svg
@@ -201,7 +201,7 @@ function Navbar({
             </svg>
           </button>
         </div>
-        <div className="overflow-scroll  no-scrollbar w-full xl:max-w-[73rem] text-white text-xs tracking-widest font-light mx-auto pt-2">
+        <div className="overflow-scroll px-3 no-scrollbar w-full xl:max-w-[73rem] text-white text-xs tracking-widest font-light mx-auto pt-2">
           <ul className="flex items-center text-xs gap-2  text-nowrap justify-around sm:justify-center">
             {home == true
               ? categoryList.map((item, i) =>
@@ -312,200 +312,202 @@ function Navbar({
             <h1>Entertainment</h1> */}
           </ul>
         </div>
-        <div
-          className={`  w-full ${
-            !sidebar && "hidden"
-          }    text-white  tracking-wider 2xl:px-44 lg:pt-8 mx-auto  xl:max-w-[73rem] "
-          id="navbar-sticky overflow-y-auto h-screen animate-fadein`}
-        >
-          <h1 className="text-2xl font-semibold py-6">Sections</h1>
-          <div className="grid grid-cols-2 gap-10 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-7 ">
-            <div>
-              <Link
-                onClick={handleSidebar}
-                href={"/tech"}
-                className="font-semibold hover:text-[#004ff2] "
-              >
-                Tech
-              </Link>
-              <ul className="font-light flex flex-col gap-3 pt-4">
-                {Tech.map((item, index) => (
-                  <li key={index}>
-                    <Link
-                      onClick={handleSidebar}
-                      href={`/tech/${item.toLowerCase()}`}
-                      key={index}
-                      className="hover:text-[#004ff2]"
-                    >
-                      {DeSlugify(item)}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <Link
-                onClick={handleSidebar}
-                href={"/fashion"}
-                className="font-semibold hover:text-[#004ff2]"
-              >
-                Fashion
-              </Link>
-              <ul className="font-light flex flex-col gap-3  pt-4">
-                {Fashion.map((item, index) => (
-                  <li key={index}>
-                    <Link
-                      onClick={handleSidebar}
-                      href={`/fashion/${item.toLowerCase()}`}
-                      key={index}
-                      className="hover:text-[#004ff2]"
-                    >
-                      {DeSlugify(item)}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <Link
-                onClick={handleSidebar}
-                href={"/rides"}
-                className="font-semibold hover:text-[#004ff2]"
-              >
-                Rides
-              </Link>
-              <ul className="font-light flex flex-col gap-3   pt-4">
-                {Rides.map((item, index) => (
-                  <li key={index}>
-                    <Link
-                      onClick={handleSidebar}
-                      href={`/rides/${item.toLowerCase()}`}
-                      key={index}
-                      className="hover:text-[#004ff2]"
-                    >
-                      {DeSlugify(item)}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <Link
-                onClick={handleSidebar}
-                href={"/lifestyle"}
-                className="font-semibold  hover:text-[#004ff2]"
-              >
-                Lifestyle
-              </Link>
-              <ul className="font-light flex flex-col gap-3   pt-4">
-                {Lifestyle.map((item, index) => (
-                  <li key={index}>
-                    <Link
-                      onClick={handleSidebar}
-                      href={`/lifestyle/${item.toLowerCase()}`}
-                      key={index}
-                      className="hover:text-[#004ff2]"
-                    >
-                      {DeSlugify(item)}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <Link
-                onClick={handleSidebar}
-                href={"/entertainment"}
-                className="font-semibold  hover:text-[#004ff2]"
-              >
-                Entertainment
-              </Link>
-              <ul className="font-light flex flex-col gap-3   pt-4">
-                {Entertainment.map((item, index) => (
-                  <li key={index}>
-                    <Link
-                      onClick={handleSidebar}
-                      href={`/entertainment/${item.toLowerCase()}`}
-                      key={index}
-                      className="hover:text-[#004ff2]"
-                    >
-                      {DeSlugify(item)}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <Link
-                onClick={handleSidebar}
-                href={"/living"}
-                className="font-semibold hover:text-[#004ff2]"
-              >
-                Living
-              </Link>
-              <ul className="font-light flex flex-col gap-3  pt-4 ">
-                {Living.map((item, index) => (
-                  <li key={index}>
-                    <Link
-                      onClick={handleSidebar}
-                      href={`/living/${item.toLowerCase()}`}
-                      key={index}
-                      className="hover:text-[#004ff2]"
-                    >
-                      {DeSlugify(item)}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <Link
-                onClick={handleSidebar}
-                href={"/outdoors"}
-                className="font-semibold hover:text-[#004ff2]"
-              >
-                Outdoors
-              </Link>
-              <ul className="font-light flex flex-col gap-3   pt-4">
-                {Outdoors.map((item, index) => (
-                  <li key={index}>
-                    <Link
-                      onClick={handleSidebar}
-                      href={`/outdoors/${item.toLowerCase()}`}
-                      key={index}
-                      className="hover:text-[#004ff2]"
-                    >
-                      {DeSlugify(item)}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <Link
-                onClick={handleSidebar}
-                href={"/news"}
-                className="font-semibold hover:text-[#004ff2]"
-              >
-                News
-              </Link>
-              <ul className="font-light flex flex-col gap-3   pt-4">
-                {News.map((item, index) => (
-                  <li key={index}>
-                    <Link
-                      onClick={handleSidebar}
-                      href={`/news/${item.toLowerCase()}`}
-                      key={index}
-                      className="hover:text-[#004ff2]"
-                    >
-                      {DeSlugify(item)}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+        <div className="bg-black w-full px-4">
+          <div
+            className={`  w-full ${
+              !sidebar && "hidden"
+            }    text-white  tracking-wider 2xl:px-44 lg:pt-8 mx-auto  xl:max-w-[73rem] px-3"
+          id="navbar-sticky overflow-y-auto h-screen animate-fadein bg-black`}
+          >
+            <h1 className="text-2xl font-semibold py-6">Sections</h1>
+            <div className="grid grid-cols-2 gap-10 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-7 ">
+              <div>
+                <Link
+                  onClick={handleSidebar}
+                  href={"/tech"}
+                  className="font-semibold hover:text-[#004ff2] "
+                >
+                  Tech
+                </Link>
+                <ul className="font-light flex flex-col gap-3 pt-4">
+                  {Tech.map((item, index) => (
+                    <li key={index}>
+                      <Link
+                        onClick={handleSidebar}
+                        href={`/tech/${item.toLowerCase()}`}
+                        key={index}
+                        className="hover:text-[#004ff2]"
+                      >
+                        {DeSlugify(item)}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <Link
+                  onClick={handleSidebar}
+                  href={"/fashion"}
+                  className="font-semibold hover:text-[#004ff2]"
+                >
+                  Fashion
+                </Link>
+                <ul className="font-light flex flex-col gap-3  pt-4">
+                  {Fashion.map((item, index) => (
+                    <li key={index}>
+                      <Link
+                        onClick={handleSidebar}
+                        href={`/fashion/${item.toLowerCase()}`}
+                        key={index}
+                        className="hover:text-[#004ff2]"
+                      >
+                        {DeSlugify(item)}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <Link
+                  onClick={handleSidebar}
+                  href={"/rides"}
+                  className="font-semibold hover:text-[#004ff2]"
+                >
+                  Rides
+                </Link>
+                <ul className="font-light flex flex-col gap-3   pt-4">
+                  {Rides.map((item, index) => (
+                    <li key={index}>
+                      <Link
+                        onClick={handleSidebar}
+                        href={`/rides/${item.toLowerCase()}`}
+                        key={index}
+                        className="hover:text-[#004ff2]"
+                      >
+                        {DeSlugify(item)}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <Link
+                  onClick={handleSidebar}
+                  href={"/lifestyle"}
+                  className="font-semibold  hover:text-[#004ff2]"
+                >
+                  Lifestyle
+                </Link>
+                <ul className="font-light flex flex-col gap-3   pt-4">
+                  {Lifestyle.map((item, index) => (
+                    <li key={index}>
+                      <Link
+                        onClick={handleSidebar}
+                        href={`/lifestyle/${item.toLowerCase()}`}
+                        key={index}
+                        className="hover:text-[#004ff2]"
+                      >
+                        {DeSlugify(item)}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <Link
+                  onClick={handleSidebar}
+                  href={"/entertainment"}
+                  className="font-semibold  hover:text-[#004ff2]"
+                >
+                  Entertainment
+                </Link>
+                <ul className="font-light flex flex-col gap-3   pt-4">
+                  {Entertainment.map((item, index) => (
+                    <li key={index}>
+                      <Link
+                        onClick={handleSidebar}
+                        href={`/entertainment/${item.toLowerCase()}`}
+                        key={index}
+                        className="hover:text-[#004ff2]"
+                      >
+                        {DeSlugify(item)}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <Link
+                  onClick={handleSidebar}
+                  href={"/living"}
+                  className="font-semibold hover:text-[#004ff2]"
+                >
+                  Living
+                </Link>
+                <ul className="font-light flex flex-col gap-3  pt-4 ">
+                  {Living.map((item, index) => (
+                    <li key={index}>
+                      <Link
+                        onClick={handleSidebar}
+                        href={`/living/${item.toLowerCase()}`}
+                        key={index}
+                        className="hover:text-[#004ff2]"
+                      >
+                        {DeSlugify(item)}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <Link
+                  onClick={handleSidebar}
+                  href={"/outdoors"}
+                  className="font-semibold hover:text-[#004ff2]"
+                >
+                  Outdoors
+                </Link>
+                <ul className="font-light flex flex-col gap-3   pt-4">
+                  {Outdoors.map((item, index) => (
+                    <li key={index}>
+                      <Link
+                        onClick={handleSidebar}
+                        href={`/outdoors/${item.toLowerCase()}`}
+                        key={index}
+                        className="hover:text-[#004ff2]"
+                      >
+                        {DeSlugify(item)}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <Link
+                  onClick={handleSidebar}
+                  href={"/news"}
+                  className="font-semibold hover:text-[#004ff2]"
+                >
+                  News
+                </Link>
+                <ul className="font-light flex flex-col gap-3   pt-4">
+                  {News.map((item, index) => (
+                    <li key={index}>
+                      <Link
+                        onClick={handleSidebar}
+                        href={`/news/${item.toLowerCase()}`}
+                        key={index}
+                        className="hover:text-[#004ff2]"
+                      >
+                        {DeSlugify(item)}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>{" "}
+            <Footer />
           </div>{" "}
-          <Footer />
         </div>
       </div>
     </nav>
