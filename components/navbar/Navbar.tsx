@@ -102,8 +102,8 @@ function Navbar({
   };
 
   return (
-    <nav className="  w-full z-20 top-0 start-0 fixed bg-black">
-      <div className="max-w-screen-xl  items-center justify-between mx-auto px-4  py-2 md:py-3">
+    <nav className="  w-full z-20 top-0 start-0 fixed bg-black h-[72px] md:h-[80px]">
+      <div className="max-w-screen-xl  items-center justify-between mx-auto px-4  py-2 md:py-3 ">
         <div className="bg-black  grid grid-cols-3   xl:max-w-[73rem] mx-auto  my-auto h-full text-white w-full ">
           {" "}
           <div className="flex items-center gap-2">
@@ -202,7 +202,7 @@ function Navbar({
           </button>
         </div>
         <div className="overflow-scroll  no-scrollbar w-full xl:max-w-[73rem] text-white text-xs tracking-widest font-light mx-auto pt-2">
-          <ul className="flex items-center text-xs gap-2 justify-center text-nowrap">
+          <ul className="flex items-center text-xs gap-2  text-nowrap justify-around sm:justify-center">
             {home == true
               ? categoryList.map((item, i) =>
                   i === 0 ? (
