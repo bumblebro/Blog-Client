@@ -201,83 +201,44 @@ function Navbar({
             </svg>
           </button>
         </div>
-        <div className="overflow-scroll mx-3 no-scrollbar w-full xl:max-w-[73rem] text-white text-xs tracking-widest font-light py-2 pt-2">
-          <ul className="flex items-center text-xs gap-2  text-nowrap justify-around sm:justify-center">
-            {home == true
-              ? categoryList.map((item, i) =>
-                  i === 0 ? (
-                    <>
-                      <Link
-                        className="hover:text-[#004ff2] "
-                        key={i}
-                        href={`/${item.toLowerCase()}`}
-                      >
-                        {DeSlugify(item)}
-                      </Link>
-                    </>
-                  ) : (
-                    <>
-                      <h1>|</h1>{" "}
-                      <Link
-                        className=" hover:text-[#004ff2]"
-                        key={i}
-                        href={`/${item.toLowerCase()}`}
-                      >
-                        {DeSlugify(item)}
-                      </Link>
-                    </>
-                  )
-                )
-              : ispost == true
-              ? categoryList.map((item, i) => {
-                  const url = `/${decodedslug.slice(0, 2).join("/")}`;
-                  return i === 0 ? (
-                    <>
-                      {" "}
-                      <Link
-                        className="hover:text-[#004ff2] "
-                        key={i}
-                        href={`${url}/${item.toLowerCase()}`}
-                      >
-                        {DeSlugify(item)}
-                      </Link>
-                    </>
-                  ) : (
-                    <>
-                      <h1>|</h1>
-                      <Link
-                        className="hover:text-[#004ff2] "
-                        key={i}
-                        href={`${url}/${item.toLowerCase()}`}
-                      >
-                        {DeSlugify(item)}
-                      </Link>
-                    </>
-                  );
-                })
-              : categoryList.map((item, i) => {
-                  // const url = `/${decodedslug.join("/")}`;
-                  return (
-                    // <Link
-                    //   className=" "
-                    //   key={i}
-                    //   href={`${url}/${item.toLowerCase()}`}
-                    // >
-                    //   {DeSlugify(item)}
-                    // </Link>
-
+        <div className="flex justify-center">
+          <div className="overflow-scroll mx-4 no-scrollbar w-full xl:max-w-[73rem] text-white text-xs tracking-widest font-light py-2 pt-2">
+            <ul className="flex items-center text-xs gap-2  text-nowrap justify-around sm:justify-center">
+              {home == true
+                ? categoryList.map((item, i) =>
                     i === 0 ? (
                       <>
-                        {" "}
+                        <Link
+                          className="hover:text-[#004ff2] "
+                          key={i}
+                          href={`/${item.toLowerCase()}`}
+                        >
+                          {DeSlugify(item)}
+                        </Link>
+                      </>
+                    ) : (
+                      <>
+                        <h1>|</h1>{" "}
                         <Link
                           className=" hover:text-[#004ff2]"
                           key={i}
-                          href={
-                            lastElement == true
-                              ? `${item.toLowerCase()}`
-                              : `
-                  ${decodedslug[decodedslug.length - 1]}/${item.toLowerCase()}`
-                          }
+                          href={`/${item.toLowerCase()}`}
+                        >
+                          {DeSlugify(item)}
+                        </Link>
+                      </>
+                    )
+                  )
+                : ispost == true
+                ? categoryList.map((item, i) => {
+                    const url = `/${decodedslug.slice(0, 2).join("/")}`;
+                    return i === 0 ? (
+                      <>
+                        {" "}
+                        <Link
+                          className="hover:text-[#004ff2] "
+                          key={i}
+                          href={`${url}/${item.toLowerCase()}`}
                         >
                           {DeSlugify(item)}
                         </Link>
@@ -288,29 +249,70 @@ function Navbar({
                         <Link
                           className="hover:text-[#004ff2] "
                           key={i}
-                          href={
-                            lastElement == true
-                              ? `${item.toLowerCase()}`
-                              : `
-                    ${
-                      decodedslug[decodedslug.length - 1]
-                    }/${item.toLowerCase()}`
-                          }
+                          href={`${url}/${item.toLowerCase()}`}
                         >
                           {DeSlugify(item)}
                         </Link>
                       </>
-                    )
-                  );
-                })}
+                    );
+                  })
+                : categoryList.map((item, i) => {
+                    // const url = `/${decodedslug.join("/")}`;
+                    return (
+                      // <Link
+                      //   className=" "
+                      //   key={i}
+                      //   href={`${url}/${item.toLowerCase()}`}
+                      // >
+                      //   {DeSlugify(item)}
+                      // </Link>
 
-            {/* <h1>TRAILBLAZERS</h1>
+                      i === 0 ? (
+                        <>
+                          {" "}
+                          <Link
+                            className=" hover:text-[#004ff2]"
+                            key={i}
+                            href={
+                              lastElement == true
+                                ? `${item.toLowerCase()}`
+                                : `
+                  ${decodedslug[decodedslug.length - 1]}/${item.toLowerCase()}`
+                            }
+                          >
+                            {DeSlugify(item)}
+                          </Link>
+                        </>
+                      ) : (
+                        <>
+                          <h1>|</h1>
+                          <Link
+                            className="hover:text-[#004ff2] "
+                            key={i}
+                            href={
+                              lastElement == true
+                                ? `${item.toLowerCase()}`
+                                : `
+                    ${
+                      decodedslug[decodedslug.length - 1]
+                    }/${item.toLowerCase()}`
+                            }
+                          >
+                            {DeSlugify(item)}
+                          </Link>
+                        </>
+                      )
+                    );
+                  })}
+
+              {/* <h1>TRAILBLAZERS</h1>
             <h1>Tech</h1>
             <h1>Watches</h1>
             <h1>Cars</h1>
             <h1>Drinks</h1>
             <h1>Entertainment</h1> */}
-          </ul>
+            </ul>
+          </div>
         </div>
         <div className="bg-black w-full px-4">
           <div
