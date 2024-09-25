@@ -3,6 +3,18 @@ import BlogList from "@/components/bloglist/BlogList";
 import Paginationblog from "@/components/pagination/Paginationblog";
 import GETBLOG from "../api/blogs/GETBLOG";
 import { Metadata } from "next";
+import Navbar from "@/components/navbar/Navbar";
+
+const slugs = [
+  "Tech",
+  "Fashion",
+  "Rides",
+  "Lifestyle",
+  "Entertainment",
+  "Living",
+  "Outdoors",
+  "News",
+];
 
 export const revalidate = 86400;
 
@@ -69,6 +81,8 @@ async function Blog({ searchParams }: { searchParams: { pageNo: string } }) {
 
   return (
     <>
+      {" "}
+      <Navbar  decodedslug={slugs} home={true} />
       <div className="mt-28 px-4">
         <h1 className="text-center  text-2xl font-semibold tracking-wider pb-4">
           The Latest News - Page 1

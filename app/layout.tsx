@@ -32,7 +32,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <NextTopLoader showSpinner={false} color="#0050f0" crawlSpeed={50} />
-        <Navbar />
+        {/* <Navbar /> */}
         {children}
         <Footer />
       </body>
