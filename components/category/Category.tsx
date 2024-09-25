@@ -27,7 +27,7 @@ function Category({ decodedslug, totalBlogs }: Category) {
   }
 
   return (
-    <div className=" text-center flex flex-col items-center gap-4 px-4 pb-3 mt-[100px] md:mt-[75px] ">
+    <div className=" text-center flex flex-col items-center gap-4 px-4 pb-3 mt-[85px] md:mt-[91px] ">
       <nav
         className="flex tracking-wider justify-start w-full xl:max-w-[73rem]"
         aria-label="Breadcrumb"
@@ -46,7 +46,7 @@ function Category({ decodedslug, totalBlogs }: Category) {
             const url = `/${decodedslug.slice(0, i + 1).join("/")}`;
 
             return (
-              <li key={i} className="flex items-center">
+              <li key={i} className="flex items-center ">
                 <svg
                   className="rtl:rotate-180 w-2 h-2 text-black mx-1"
                   aria-hidden="true"
@@ -65,7 +65,7 @@ function Category({ decodedslug, totalBlogs }: Category) {
                 <Link
                   href={url.toLowerCase()}
                   className="inline-flex capitalize items-center font-medium
-                  text-gray-500 hover:text-blue-600 "
+                  text-gray-500 hover:text-blue-600  "
                 >
                   {DeSlugify(item)}
                 </Link>
@@ -91,10 +91,10 @@ function Category({ decodedslug, totalBlogs }: Category) {
       </p>
       {decodedslug.length < 3 && (
         <div className="overflow-scroll  no-scrollbar w-full xl:max-w-[73rem] ">
-          <ul className="flex items-center text-xs  pt-8 gap-12 justify-evenly md:gap-16 underline  ">
+          <ul className="flex items-center text-xs  pt-8  justify-around gap-10 px-10 underline md:justify-center ">
             {categoryList.map((item, i) => (
               <Link
-                className=" "
+                className="hover:text-[#004ff2]"
                 key={i}
                 href={`${
                   decodedslug[decodedslug.length - 1]

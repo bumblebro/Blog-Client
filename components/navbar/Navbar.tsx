@@ -1,9 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Footer from "../footer/Footer";
 import DeSlugify from "@/libs/DeSlugify";
+import { subSections } from "@/libs/Section";
 
 const Tech = ["Apple", "Audio", "Cameras", "Computers", "Smartphones", "TVs"];
 const Fashion = [
@@ -37,8 +38,64 @@ const Living = ["Appliances", "Architecture", "Furniture", "Homewares"];
 const Outdoors = ["Camping", "Snow", "Surfing", "Skate", "Hiking"];
 const News = ["World-News", "Tech-News", "Sports-News", "Entertainment-News"];
 
-function Navbar() {
+function Navbar({
+  decodedslug,
+  home,
+  ispost,
+}: {
+  decodedslug: any;
+  home?: boolean;
+  ispost?: boolean;
+}) {
   const [sidebar, setSideBar] = useState(false);
+  const [categoryList, setCategoryList] = useState<string[]>([]);
+  const [lastElement, setLastElement] = useState(false);
+
+  useEffect(() => {
+    console.log(`SLUGGGGG`, decodedslug);
+    setLastElement(false);
+
+    if (decodedslug.length == 3) {
+      setLastElement(true);
+      // setLen(decodedslug.length);
+    } else setLastElement(false);
+
+    if (home == true) {
+      setCategoryList(decodedslug);
+      return;
+    }
+
+    if (Array.isArray(decodedslug) && decodedslug.length > 0) {
+      const input = decodedslug[decodedslug.length - 1]?.trim().toLowerCase();
+      for (const [category, subCategory] of Object.entries(subSections)) {
+        if (input === category.toLowerCase()) {
+          setCategoryList(Object.keys(subCategory));
+        }
+
+        // Check if the input matches a sub-category
+        for (const [subCategoryKey, items] of Object.entries(subCategory)) {
+          if (input === subCategoryKey.toLowerCase()) {
+            setCategoryList(items);
+          }
+        }
+        if (categoryList.length == 0) {
+          // setLastElement(true);
+
+          for (const [subCategoryKey, items] of Object.entries(subCategory)) {
+            if (
+              decodedslug[decodedslug.length - 2]?.trim().toLowerCase() ===
+              subCategoryKey.toLowerCase()
+            ) {
+              setCategoryList(items);
+            }
+          }
+
+          // decodedslug.pop();
+        }
+      }
+    }
+    console.log(`lastElement`, lastElement);
+  }, []);
 
   const handleSidebar = () => {
     setSideBar(false);
@@ -46,8 +103,8 @@ function Navbar() {
 
   return (
     <nav className="  w-full z-20 top-0 start-0 fixed bg-black">
-      <div className="max-w-screen-xl  items-center justify-between mx-auto px-4 py-2 md:py-4">
-        <div className="bg-black  grid grid-cols-3 py-3 md:py-0 xl:max-w-[73rem] mx-auto  my-auto h-full text-white w-full ">
+      <div className="max-w-screen-xl  items-center justify-between mx-auto px-4  py-2 md:py-3">
+        <div className="bg-black  grid grid-cols-3   xl:max-w-[73rem] mx-auto  my-auto h-full text-white w-full ">
           {" "}
           <div className="flex items-center gap-2">
             {sidebar ? (
@@ -112,7 +169,7 @@ function Navbar() {
           </div>
           <div className="flex justify-center items-center">
             <Link href="/" onClick={handleSidebar}>
-              <h1 className="uppercase font-[650] tracking-[4px] text-xl md:text-[1.1rem]  lg:text-[1.4rem] xl:text-[1.7rem] text-center  ">
+              <h1 className="uppercase font-[650] tracking-[4px] text-xl   lg:text-[1.4rem] xl:text-[1.7rem] text-center  ">
                 WordofMany
               </h1>
             </Link>
@@ -143,6 +200,117 @@ function Navbar() {
               />
             </svg>
           </button>
+        </div>
+        <div className="overflow-scroll  no-scrollbar w-full xl:max-w-[73rem] text-white text-xs tracking-widest font-light mx-auto pt-2">
+          <ul className="flex items-center text-xs gap-2 justify-center text-nowrap">
+            {home == true
+              ? categoryList.map((item, i) =>
+                  i === 0 ? (
+                    <>
+                      <Link
+                        className="hover:text-[#004ff2] "
+                        key={i}
+                        href={`/${item.toLowerCase()}`}
+                      >
+                        {DeSlugify(item)}
+                      </Link>
+                    </>
+                  ) : (
+                    <>
+                      <h1>|</h1>{" "}
+                      <Link
+                        className=" hover:text-[#004ff2]"
+                        key={i}
+                        href={`/${item.toLowerCase()}`}
+                      >
+                        {DeSlugify(item)}
+                      </Link>
+                    </>
+                  )
+                )
+              : ispost == true
+              ? categoryList.map((item, i) => {
+                  const url = `/${decodedslug.slice(0, 2).join("/")}`;
+                  return i === 0 ? (
+                    <>
+                      {" "}
+                      <Link
+                        className="hover:text-[#004ff2] "
+                        key={i}
+                        href={`${url}/${item.toLowerCase()}`}
+                      >
+                        {DeSlugify(item)}
+                      </Link>
+                    </>
+                  ) : (
+                    <>
+                      <h1>|</h1>
+                      <Link
+                        className="hover:text-[#004ff2] "
+                        key={i}
+                        href={`${url}/${item.toLowerCase()}`}
+                      >
+                        {DeSlugify(item)}
+                      </Link>
+                    </>
+                  );
+                })
+              : categoryList.map((item, i) => {
+                  // const url = `/${decodedslug.join("/")}`;
+                  return (
+                    // <Link
+                    //   className=" "
+                    //   key={i}
+                    //   href={`${url}/${item.toLowerCase()}`}
+                    // >
+                    //   {DeSlugify(item)}
+                    // </Link>
+
+                    i === 0 ? (
+                      <>
+                        {" "}
+                        <Link
+                          className=" hover:text-[#004ff2]"
+                          key={i}
+                          href={
+                            lastElement == true
+                              ? `${item.toLowerCase()}`
+                              : `
+                  ${decodedslug[decodedslug.length - 1]}/${item.toLowerCase()}`
+                          }
+                        >
+                          {DeSlugify(item)}
+                        </Link>
+                      </>
+                    ) : (
+                      <>
+                        <h1>|</h1>
+                        <Link
+                          className="hover:text-[#004ff2] "
+                          key={i}
+                          href={
+                            lastElement == true
+                              ? `${item.toLowerCase()}`
+                              : `
+                    ${
+                      decodedslug[decodedslug.length - 1]
+                    }/${item.toLowerCase()}`
+                          }
+                        >
+                          {DeSlugify(item)}
+                        </Link>
+                      </>
+                    )
+                  );
+                })}
+
+            {/* <h1>TRAILBLAZERS</h1>
+            <h1>Tech</h1>
+            <h1>Watches</h1>
+            <h1>Cars</h1>
+            <h1>Drinks</h1>
+            <h1>Entertainment</h1> */}
+          </ul>
         </div>
         <div
           className={`  w-full ${

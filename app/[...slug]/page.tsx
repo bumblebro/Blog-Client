@@ -256,7 +256,7 @@ async function BlogCategory({ params }: params) {
   let currentPost: Blogs | null = null;
 
   let slugs: string[] = [];
-
+  let navslugs: string[] = [];
   let page = 1;
 
   let { slug } = params;
@@ -272,6 +272,9 @@ async function BlogCategory({ params }: params) {
     slugs = decodedslug;
   }
 
+  // if ((slugs.length = 4)) {
+  // navslugs = decodedslug.slice(0, 2);
+  // } else navslugs = slugs;
   // if (decodedslug.length < 4) {
   //   console.log(`weferwfwe`, decodedslug);
   //   decodedslug.map((item) => {
@@ -407,10 +410,14 @@ async function BlogCategory({ params }: params) {
       latposts = response.blogs;
     }
   }
+
+  navslugs = await slugs.slice(0, 3);
+
   return (
     <>
       {currentPost ? (
         <>
+          <Navbar decodedslug={navslugs} ispost={true} />
           <CategoryPost decodedslug={slugs} totalBlogs={totalBlogs} />
           <BlogDisplay
             decodedslug={decodedslug}
@@ -421,6 +428,7 @@ async function BlogCategory({ params }: params) {
         </>
       ) : (
         <>
+          <Navbar decodedslug={slugs} />
           <Category decodedslug={slugs} totalBlogs={totalBlogs} />
           <BlogList posts={posts} />{" "}
           <Paginationbloglist

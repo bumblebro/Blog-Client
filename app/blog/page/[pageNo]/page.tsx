@@ -15,6 +15,17 @@ interface params {
   };
 }
 
+const slugs = [
+  "Tech",
+  "Fashion",
+  "Rides",
+  "Lifestyle",
+  "Entertainment",
+  "Living",
+  "Outdoors",
+  "News",
+];
+
 export const revalidate = 86400;
 
 export async function generateStaticParams() {
@@ -96,27 +107,21 @@ async function BlogPage({ params }: params) {
 
   return (
     <>
-      {/* <Navbar SetSideBar={SetSideBar} sidebar={sidebar} /> */}
-      {sidebar ? (
-        <Sidebar />
-      ) : (
-        <>
-          <div className="mt-32 md:mt-22 lg:mt-13">
-            <h1 className="text-center  text-2xl font-semibold tracking-wider pb-4">
-              The Latest News - Page {params.pageNo.toString()}
-            </h1>
-            <h1 className="text-center  text-sm font-semibold tracking-wider">
-              {totalBlogs} Latest Posts Articles Published
-            </h1>
-            <BlogList posts={posts || []} />
-            <Paginationblog
-              pageNo={params.pageNo.toString()}
-              totalPages={totalPages}
-              hasNextPage={hasNextPage}
-            />
-          </div>
-        </>
-      )}
+      <Navbar decodedslug={slugs} home={true} />
+      <div className="mt-32 md:mt-22 lg:mt-13">
+        <h1 className="text-center  text-2xl font-semibold tracking-wider pb-4">
+          The Latest News - Page {params.pageNo.toString()}
+        </h1>
+        <h1 className="text-center  text-sm font-semibold tracking-wider">
+          {totalBlogs} Latest Posts Articles Published
+        </h1>
+        <BlogList posts={posts || []} />
+        <Paginationblog
+          pageNo={params.pageNo.toString()}
+          totalPages={totalPages}
+          hasNextPage={hasNextPage}
+        />
+      </div>
     </>
   );
 }
