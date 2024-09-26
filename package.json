@@ -10,6 +10,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@builder.io/partytown": "^0.10.2",
     "@google/generative-ai": "^0.17.1",
     "@neondatabase/serverless": "^0.9.5",
     "@next/third-parties": "^14.2.13",

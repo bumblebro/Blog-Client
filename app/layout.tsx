@@ -5,6 +5,7 @@ import Navbar from "@/components/navbar/Navbar";
 import NextTopLoader from "nextjs-toploader";
 import Footer from "@/components/footer/Footer";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import Script from "next/script";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -32,6 +33,24 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
+        <Script
+          strategy="worker"
+          src={`https://www.googletagmanager.com/gtag/js?id=G-GR0NLTCFVB`}
+        />
+        <script
+          type="text/partytown"
+          dangerouslySetInnerHTML={{
+            __html: `
+            window.dataLayer = window.dataLayer || [];
+            window.gtag = function gtag(){window.dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-GR0NLTCFVB', { 
+                page_path: window.location.pathname,
+            });
+        `,
+          }}
+        />
         <NextTopLoader showSpinner={false} color="#0050f0" crawlSpeed={50} />
         {/* <Navbar /> */}
         {children}
