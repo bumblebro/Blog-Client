@@ -201,13 +201,13 @@ function Navbar({
             </svg>
           </button>
         </div>
-        <div className="flex justify-center">
+        <div className="flex justify-around">
           <div className="overflow-scroll mx-4 no-scrollbar w-full xl:max-w-[73rem] text-white text-xs tracking-widest font-light py-2 pt-2">
-            <ul className="flex items-center text-xs gap-2  text-nowrap justify-around sm:justify-center">
+            <ul className="flex items-center text-xs gap-2  text-nowrap justify-evenly mx-4 sm:justify-center">
               {home == true
                 ? categoryList.map((item, i) =>
                     i === 0 ? (
-                      <>
+                      <li key={i}>
                         <Link
                           className="hover:text-[#004ff2] "
                           key={i}
@@ -215,17 +215,22 @@ function Navbar({
                         >
                           {DeSlugify(item)}
                         </Link>
-                      </>
+                      </li>
                     ) : (
                       <>
-                        <h1>|</h1>{" "}
-                        <Link
-                          className=" hover:text-[#004ff2]"
-                          key={i}
-                          href={`/${item.toLowerCase()}`}
-                        >
-                          {DeSlugify(item)}
-                        </Link>
+                        {" "}
+                        <li key={i}>
+                          <h1>|</h1>
+                        </li>
+                        <li key={i}>
+                          <Link
+                            className=" hover:text-[#004ff2]"
+                            key={i}
+                            href={`/${item.toLowerCase()}`}
+                          >
+                            {DeSlugify(item)}
+                          </Link>
+                        </li>
                       </>
                     )
                   )
@@ -233,8 +238,7 @@ function Navbar({
                 ? categoryList.map((item, i) => {
                     const url = `/${decodedslug.slice(0, 2).join("/")}`;
                     return i === 0 ? (
-                      <>
-                        {" "}
+                      <li key={i}>
                         <Link
                           className="hover:text-[#004ff2] "
                           key={i}
@@ -242,17 +246,21 @@ function Navbar({
                         >
                           {DeSlugify(item)}
                         </Link>
-                      </>
+                      </li>
                     ) : (
                       <>
-                        <h1>|</h1>
-                        <Link
-                          className="hover:text-[#004ff2] "
-                          key={i}
-                          href={`${url}/${item.toLowerCase()}`}
-                        >
-                          {DeSlugify(item)}
-                        </Link>
+                        <li key={i}>
+                          <h1>|</h1>
+                        </li>
+                        <li key={i}>
+                          <Link
+                            className="hover:text-[#004ff2] "
+                            key={i}
+                            href={`${url}/${item.toLowerCase()}`}
+                          >
+                            {DeSlugify(item)}
+                          </Link>
+                        </li>
                       </>
                     );
                   })
@@ -268,7 +276,7 @@ function Navbar({
                       // </Link>
 
                       i === 0 ? (
-                        <>
+                        <li key={i}>
                           {" "}
                           <Link
                             className=" hover:text-[#004ff2]"
@@ -282,24 +290,29 @@ function Navbar({
                           >
                             {DeSlugify(item)}
                           </Link>
-                        </>
+                        </li>
                       ) : (
                         <>
-                          <h1>|</h1>
-                          <Link
-                            className="hover:text-[#004ff2] "
-                            key={i}
-                            href={
-                              lastElement == true
-                                ? `${item.toLowerCase()}`
-                                : `
+                          {" "}
+                          <li key={i}>
+                            <h1>|</h1>
+                          </li>{" "}
+                          <li>
+                            <Link
+                              className="hover:text-[#004ff2] "
+                              key={i}
+                              href={
+                                lastElement == true
+                                  ? `${item.toLowerCase()}`
+                                  : `
                     ${
                       decodedslug[decodedslug.length - 1]
                     }/${item.toLowerCase()}`
-                            }
-                          >
-                            {DeSlugify(item)}
-                          </Link>
+                              }
+                            >
+                              {DeSlugify(item)}
+                            </Link>
+                          </li>
                         </>
                       )
                     );
