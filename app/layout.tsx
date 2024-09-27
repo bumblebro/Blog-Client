@@ -36,14 +36,20 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        {/* <Script
-          strategy="worker"
-          src={`https://www.googletagmanager.com/gtag/js?id=G-GR0NLTCFVB`}
-        />
-        <script
-          type="text/partytown"
-          dangerouslySetInnerHTML={{
-            __html: `
+        <NextTopLoader showSpinner={false} color="#0050f0" crawlSpeed={50} />
+        {/* <Navbar /> */}
+        {children}
+        <Footer />
+      </body>
+      <Script
+        strategy="worker"
+        src={`https://www.googletagmanager.com/gtag/js?id=G-GR0NLTCFVB`}
+      />
+      <Script
+        id="google-analytics"
+        type="text/partytown"
+        dangerouslySetInnerHTML={{
+          __html: `
             window.dataLayer = window.dataLayer || [];
             window.gtag = function gtag(){window.dataLayer.push(arguments);}
             gtag('js', new Date());
@@ -52,48 +58,8 @@ export default function RootLayout({
                 page_path: window.location.pathname,
             });
         `,
-          }}
-        /> */}
-        <NextTopLoader showSpinner={false} color="#0050f0" crawlSpeed={50} />
-        {/* <Navbar /> */}
-        {children}
-        <Footer />
-      </body>
-      {/* <Script
-        src={`https://www.googletagmanager.com/gtag/js?id=G-GR0NLTCFVB`}
-        strategy="afterInteractive"
-      />
-      <Script
-        id="google-analytics"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{
-          __html: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-
-            gtag('config', 'G-GR0NLTCFVB');
-          `,
         }}
-      /> */}
-
-      {/* <!-- Google tag (gtag.js) --> */}
-      {/* <!-- Google tag (gtag.js) --> */}
-      <Script
-        strategy="worker"
-        async
-        src="https://www.googletagmanager.com/gtag/js?id=G-GR0NLTCFVB"
       />
-      <Script id="google-analytics" strategy="worker">
-        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-
-          gtag('config', 'G-GR0NLTCFVB');
-        `}
-      </Script>
-
       {/* <GoogleAnalytics gaId="G-GR0NLTCFVB" /> */}
     </html>
   );
