@@ -201,9 +201,9 @@ function Navbar({
             </svg>
           </button>
         </div>
-        <div className="flex justify-around px-4">
+        <div className="flex justify-center w-[90%] mx-auto">
           <div className="overflow-scroll  no-scrollbar w-full xl:max-w-[73rem] text-white text-xs tracking-widest font-light py-2 pt-2">
-            <ul className="flex items-center text-xs gap-2  text-nowrap justify-evenly mx-4 sm:justify-center">
+            <ul className="flex items-center text-xs gap-2  text-nowrap justify-evenly  sm:justify-center">
               {home == true
                 ? categoryList.map((item, i) =>
                     i === 0 ? (
