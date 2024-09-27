@@ -33,7 +33,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Script
+        {/* <Script
           strategy="worker"
           src={`https://www.googletagmanager.com/gtag/js?id=G-GR0NLTCFVB`}
         />
@@ -50,12 +50,30 @@ export default function RootLayout({
             });
         `,
           }}
-        />
+        /> */}
         <NextTopLoader showSpinner={false} color="#0050f0" crawlSpeed={50} />
         {/* <Navbar /> */}
         {children}
         <Footer />
       </body>
+      <Script
+        strategy="worker"
+        src={`https://www.googletagmanager.com/gtag/js?id=G-GR0NLTCFVB`}
+      />
+      <script
+        type="text/partytown"
+        dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            window.gtag = function gtag(){window.dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-GR0NLTCFVB', { 
+                page_path: window.location.pathname,
+            });
+        `,
+        }}
+      />
       {/* <GoogleAnalytics gaId="G-GR0NLTCFVB" /> */}
     </html>
   );
