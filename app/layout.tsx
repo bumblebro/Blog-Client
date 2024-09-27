@@ -57,39 +57,23 @@ export default function RootLayout({
         {children}
         <Footer />
       </body>
-      {/* <Script
-        strategy="worker"
+      <Script
         src={`https://www.googletagmanager.com/gtag/js?id=G-GR0NLTCFVB`}
+        strategy="afterInteractive"
       />
-      <script
-        type="text/partytown"
+      <Script
+        id="google-analytics"
+        strategy="afterInteractive"
         dangerouslySetInnerHTML={{
           __html: `
             window.dataLayer = window.dataLayer || [];
-            window.gtag = function gtag(){window.dataLayer.push(arguments);}
+            function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
 
-            gtag('config', 'G-GR0NLTCFVB', { 
-                page_path: window.location.pathname,
-            });
-        `,
+            gtag('config', 'G-GR0NLTCFVB');
+          `,
         }}
-      /> */}
-      {/* <Script
-        async
-        src="https://www.googletagmanager.com/gtag/js?id=G-GR0NLTCFVB"
       />
-      <Script id="google-analytics" strategy="afterInteractive">
-        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'G-GR0NLTCFVB');
-        `}
-      </Script> */}
-
-      <AnalyticsScript />
-
       {/* <GoogleAnalytics gaId="G-GR0NLTCFVB" /> */}
     </html>
   );
