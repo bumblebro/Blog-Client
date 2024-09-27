@@ -1,4 +1,4 @@
-<script
+{/* <script
   data-partytown-config
   dangerouslySetInnerHTML={{
     __html: `
@@ -8,4 +8,4 @@
           };
         `,
   }}
-/>;
+/>; */}
