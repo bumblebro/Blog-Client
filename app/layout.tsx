@@ -35,31 +35,25 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-GR0NLTCFVB"
+        ></Script>
+        <Script id="google-analytics">
+          {`window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-GR0NLTCFVB');`}
+        </Script>
+      </head>
       <body className={inter.className}>
         <NextTopLoader showSpinner={false} color="#0050f0" crawlSpeed={50} />
         {/* <Navbar /> */}
         {children}
         <Footer />
       </body>
-      <Script
-        strategy="worker"
-        src={`https://www.googletagmanager.com/gtag/js?id=G-GR0NLTCFVB`}
-      />
-      <Script
-        id="google-analytics"
-        type="text/partytown"
-        dangerouslySetInnerHTML={{
-          __html: `
-            window.dataLayer = window.dataLayer || [];
-            window.gtag = function gtag(){window.dataLayer.push(arguments);}
-            gtag('js', new Date());
-
-            gtag('config', 'G-GR0NLTCFVB', { 
-                page_path: window.location.pathname,
-            });
-        `,
-        }}
-      />
       {/* <GoogleAnalytics gaId="G-GR0NLTCFVB" /> */}
     </html>
   );
