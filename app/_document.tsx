@@ -1,4 +1,7 @@
-{/* <script
+import Script from "next/script";
+
+<Script
+  id="partydown"
   data-partytown-config
   dangerouslySetInnerHTML={{
     __html: `
@@ -8,4 +11,4 @@
           };
         `,
   }}
-/>; */}
+/>;
