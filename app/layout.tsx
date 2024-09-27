@@ -74,7 +74,7 @@ export default function RootLayout({
         `,
         }}
       /> */}
-      <Script
+      {/* <Script
         async
         src="https://www.googletagmanager.com/gtag/js?id=G-GR0NLTCFVB"
       />
@@ -85,7 +85,21 @@ export default function RootLayout({
           gtag('js', new Date());
           gtag('config', 'G-GR0NLTCFVB');
         `}
-      </Script>
+      </Script> */}
+
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-GR0NLTCFVB"
+        strategy="lazyOnload"
+        onLoad={() => {
+          (window as any).dataLayer = (window as any).dataLayer || [];
+          (window as any).gtag = function () {
+            (window as any).dataLayer.push(arguments);
+          };
+          (window as any).gtag("js", new Date());
+          (window as any).gtag("config", "G-GR0NLTCFVB");
+        }}
+      />
+
       {/* <GoogleAnalytics gaId="G-GR0NLTCFVB" /> */}
     </html>
   );
