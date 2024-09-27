@@ -6,6 +6,7 @@ import NextTopLoader from "nextjs-toploader";
 import Footer from "@/components/footer/Footer";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import Script from "next/script";
+import AnalyticsScript from "@/components/AnalyticsScript";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -87,18 +88,7 @@ export default function RootLayout({
         `}
       </Script> */}
 
-      <Script
-        src="https://www.googletagmanager.com/gtag/js?id=G-GR0NLTCFVB"
-        strategy="lazyOnload"
-        onLoad={() => {
-          (window as any).dataLayer = (window as any).dataLayer || [];
-          (window as any).gtag = function () {
-            (window as any).dataLayer.push(arguments);
-          };
-          (window as any).gtag("js", new Date());
-          (window as any).gtag("config", "G-GR0NLTCFVB");
-        }}
-      />
+      <AnalyticsScript />
 
       {/* <GoogleAnalytics gaId="G-GR0NLTCFVB" /> */}
     </html>
