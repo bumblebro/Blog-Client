@@ -10,7 +10,7 @@ import AnalyticsScript from "@/components/AnalyticsScript";
 
 const inter = Inter({ subsets: ["latin"] });
 
-declare var dataLayer: any[];
+// declare var dataLayer: any[];
 
 export const metadata: Metadata = {
   metadataBase: new URL(`${process.env.NEXT_PUBLIC_BASE_API_URL}`),
@@ -83,11 +83,15 @@ export default function RootLayout({
         strategy="worker"
         async
         src="https://www.googletagmanager.com/gtag/js?id=G-GR0NLTCFVB"
-      ></Script>
-      <Script strategy="worker" id="google-analytics">
-        window.dataLayer = window.dataLayer || []; function gtag()
-        {dataLayer.push(arguments)}
-        gtag(js, new Date()); gtag(config, G-GR0NLTCFVB);
+      />
+      <Script id="google-analytics" strategy="worker">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-GR0NLTCFVB');
+        `}
       </Script>
 
       {/* <GoogleAnalytics gaId="G-GR0NLTCFVB" /> */}
