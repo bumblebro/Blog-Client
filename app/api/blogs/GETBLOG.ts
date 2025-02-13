@@ -9,27 +9,32 @@ const prisma = new PrismaClient();
 const pageSize = 24;
 
 export default async function GETBLOG({ pageNo }: { pageNo: string }) {
-  const pageNum = parseInt(pageNo || "1");
-  const take = pageSize;
-  const skip = (pageNum - 1) * pageSize;
+  try {
+    const pageNum = parseInt(pageNo || "1");
+    const take = pageSize;
+    const skip = (pageNum - 1) * pageSize;
 
-  const blogs = await prisma.blogs.findMany({
-    skip,
-    take,
-    orderBy: {
-      // Replace 'createdAt' with the actual name of your date field
-      creationDate: "desc",
-    },
-    // cacheStrategy: { ttl: 86400 },
-  });
+    const blogs = await prisma.blogs.findMany({
+      skip,
+      take,
+      orderBy: {
+        // Replace 'createdAt' with the actual name of your date field
+        creationDate: "desc",
+      },
+      // cacheStrategy: { ttl: 86400 },
+    });
 
-  const totalBlogs = await prisma.blogs.count();
-  return {
-    blogs: blogs,
-    metaData: {
-      hasNextPage: take + skip < totalBlogs,
-      totalPages: Math.ceil(totalBlogs / take),
-      totalBlogs: totalBlogs,
-    },
-  };
+    const totalBlogs = await prisma.blogs.count();
+    return {
+      blogs: blogs,
+      metaData: {
+        hasNextPage: take + skip < totalBlogs,
+        totalPages: Math.ceil(totalBlogs / take),
+        totalBlogs: totalBlogs,
+      },
+    };
+  } catch (e) {
+    console.log(`ERORRRORROROOR`, e);
+    return e;
+  }
 }
