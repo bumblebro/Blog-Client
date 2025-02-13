@@ -35,6 +35,6 @@ export default async function GETBLOG({ pageNo }: { pageNo: string }) {
     };
   } catch (e) {
     console.log(`ERORRRORROROOR`, e);
-    return e;
+    // return null;
   }
 }

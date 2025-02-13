@@ -30,7 +30,7 @@ export const revalidate = 86400;
 
 export async function generateStaticParams() {
   const response = await GETBLOG({ pageNo: "1" });
-  const totalpage = response.metaData.totalPages;
+  const totalpage: any = response?.metaData.totalPages;
   const arr = [];
   for (let i = 1; i <= totalpage; i++) {
     arr.push({
