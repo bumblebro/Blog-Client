@@ -30,7 +30,7 @@ function generateRSSFeed(recipes: any) {
   const feed = new Feed({
     title: "WordOfMany",
     description:
-      " Welcome to WordofMany, a vibrant platform dedicated to exploring the vast expanse of knowledge through the art of storytelling. We are more than just a website&mdash;we&rsquo;re a community of curious minds, a destination where ideas meet exploration, and words turn into an ever-growing collection of insights, thoughts, and perspectives.",
+      "Welcome to WordofMany, a vibrant platform dedicated to exploring the vast expanse of knowledge through the art of storytelling. We are more than just a website, we're a community of curious minds, a destination where ideas meet exploration, and words turn into an ever-growing collection of insights, thoughts, and perspectives.",
     id: siteURL,
     link: siteURL,
     image: `${siteURL}/opengraph-image.png`,

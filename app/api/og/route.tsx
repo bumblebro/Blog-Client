@@ -120,7 +120,7 @@ export async function GET(req: NextRequest) {
           fontFamily: "source-sans-pro.extralight",
         }}
       >
-        savorytouch.com
+        wordofmany.com
       </div>
       <img
         src={cover}
