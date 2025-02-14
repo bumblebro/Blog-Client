@@ -99,8 +99,10 @@ export async function GET(req: NextRequest) {
           textAlign: "center",
           paddingRight: "10px",
           paddingLeft: "10px",
-          fontSize: "75px",
-          fontFamily: "SoinSansPro-Bold",
+          fontSize: "90px",
+          // fontSize: "120px",
+          // fontFamily: "SoinSansPro-Bold",
+          fontFamily: "source-sans-pro.black",
           textTransform: "capitalize",
         }}
       >
