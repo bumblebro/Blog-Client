@@ -1,4 +1,5 @@
 import BLOGCOMPLETE from "@/app/api/blogscomplete/BLOGCOMPLETE";
+import DeSlugify from "@/libs/DeSlugify";
 import { Blogs } from "@prisma/client";
 import { Feed } from "feed";
 
@@ -69,7 +70,7 @@ function generateRSSFeed(recipes: any) {
 
     if (imageUrl) {
       feed.addItem({
-        title: r.title,
+        title: DeSlugify(r.title),
         id: url,
         link: url,
         description: r.seo.ogDescription,
