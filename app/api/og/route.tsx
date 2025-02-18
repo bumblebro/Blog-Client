@@ -132,7 +132,7 @@ export async function GET(req: NextRequest) {
         style={{
           flexGrow: 1, // Ensures the image takes available space
           width: "100%",
-          objectFit: "cover",
+          objectFit: "contain",
           objectPosition: "center",
         }}
       />
