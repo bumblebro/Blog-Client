@@ -18,6 +18,10 @@ export default async function BLOGCOMPLETE() {
       seo: true,
       creationDate: true, // Date the blog was created
     },
+    orderBy: {
+      // Replace 'createdAt' with the actual name of your date field
+      creationDate: "desc",
+    },
 
     // cacheStrategy: { ttl: 86400 },
   });
