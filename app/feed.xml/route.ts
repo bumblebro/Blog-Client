@@ -68,27 +68,27 @@ function generateRSSFeed(recipes: any) {
       name: r.subsubsection,
     };
 
-    if (imageUrl) {
-      feed.addItem({
-        title: DeSlugify(r.title),
-        id: url,
-        link: url,
-        description: r.seo.ogDescription,
-        // content: r.recipedescription,
-        author: [author],
-        contributor: [author],
-        date: r.creationDate,
-        category: [cat1, cat2, cat3],
-        image: {
-          type: "image/png",
-          url:
-            domain +
-            `/api/og?title=${r.title}&amp;cover=${encodeURIComponent(
-              r.imageurl
-            )}`,
-        },
-      });
-    }
+    // if (imageUrl) {
+    feed.addItem({
+      title: DeSlugify(r.title),
+      id: url,
+      link: url,
+      description: r.seo.ogDescription,
+      // content: r.recipedescription,
+      author: [author],
+      contributor: [author],
+      date: r.creationDate,
+      category: [cat1, cat2, cat3],
+      image: {
+        type: "image/png",
+        url:
+          domain +
+          `/api/og?title=${r.title}&amp;cover=${encodeURIComponent(
+            r.imageurl
+          )}`,
+      },
+    });
+    // }
   });
 
   return feed.rss2();
