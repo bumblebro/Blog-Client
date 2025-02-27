@@ -1,3 +1,4 @@
+
 import GETBLOG from "@/app/api/blogs/GETBLOG";
 import BlogList from "@/components/bloglist/BlogList";
 import Footer from "@/components/footer/Footer";

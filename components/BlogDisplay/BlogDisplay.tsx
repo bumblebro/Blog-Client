@@ -127,9 +127,26 @@ function BlogDisplay({ decodedslug, currentPost, posts, latposts }: BlogDisp) {
                       : ""
                   }${currentPost.title}`}
                 />
-                <ShareBtn
+                {/* <ShareBtn
                   text={(currentPost?.seo as SEOType).ogDescription}
                   url={currentPost.imageurl}
+                  title={currentPost.title}
+                /> */}
+                <ShareBtn
+                  text={(currentPost?.seo as SEOType).ogDescription}
+                  url={`${process.env.NEXT_PUBLIC_BASE_API_URL}/${
+                    currentPost.section !== "null"
+                      ? currentPost.section + "/"
+                      : ""
+                  }${
+                    currentPost.subsection !== "null"
+                      ? currentPost.subsection + "/"
+                      : ""
+                  }${
+                    currentPost.subsubsection !== "null"
+                      ? currentPost.subsubsection + "/"
+                      : ""
+                  }${currentPost.title}`}
                   title={currentPost.title}
                 />
               </div>

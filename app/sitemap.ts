@@ -6,7 +6,7 @@ import GETBLOGALL from "./api/blogsall/GETBLOGALL";
 import { Blogs } from "@prisma/client";
 import { url } from "inspector";
 
-export const revalidate = 86400; // 1 day in seconds
+export const revalidate = 43200; // 1/2 day in seconds
 
 async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const response = await GETBLOG({ pageNo: "1" });
