@@ -5,17 +5,17 @@ import GETBLOG from "../api/blogs/GETBLOG";
 import { Metadata } from "next";
 import Navbar from "@/components/navbar/Navbar";
 
-const slugs = [
-  "Tech",
-  "Fashion",
-  "Rides",
-  "Lifestyle",
-  "Entertainment",
-  "Living",
-  "Outdoors",
-  "News",
-];
 
+const slugs = [
+  "Beauty",
+  "Fashion",
+  "Lifestyle",
+  "Travel",
+  "Media",
+  "Wellness",
+  "CollegeLife",
+  "SeasonalFun",
+];
 export const revalidate = 86400;
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -82,7 +82,7 @@ async function Blog({ searchParams }: { searchParams: { pageNo: string } }) {
   return (
     <>
       {" "}
-      <Navbar  decodedslug={slugs} home={true} />
+      <Navbar decodedslug={slugs} home={true} />
       <div className="mt-28 px-4">
         <h1 className="text-center  text-2xl font-semibold tracking-wider pb-4">
           The Latest News - Page 1

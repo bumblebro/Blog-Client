@@ -1,4 +1,3 @@
-
 import GETBLOG from "@/app/api/blogs/GETBLOG";
 import BlogList from "@/components/bloglist/BlogList";
 import Footer from "@/components/footer/Footer";
@@ -16,17 +15,17 @@ interface params {
   };
 }
 
-const slugs = [
-  "Tech",
-  "Fashion",
-  "Rides",
-  "Lifestyle",
-  "Entertainment",
-  "Living",
-  "Outdoors",
-  "News",
-];
 
+const slugs = [
+  "Beauty",
+  "Fashion",
+  "Lifestyle",
+  "Travel",
+  "Media",
+  "Wellness",
+  "CollegeLife",
+  "SeasonalFun",
+];
 export const revalidate = 86400;
 
 export async function generateStaticParams() {

@@ -28,4 +28,6 @@ model Blogs {
   content Json[]
   seo Json
   creationDate DateTime @default(now())
+  reviews           Json[]
+
 }
