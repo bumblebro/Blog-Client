@@ -234,6 +234,9 @@ export async function GET(req: NextRequest) {
           width: "100%",
           objectFit: "cover",
           objectPosition: "center",
+          borderRadius: "50px",
+          borderBottomLeftRadius: "0px",
+          borderBottomRightRadius: "0px",
         }}
       />
     </div>,
