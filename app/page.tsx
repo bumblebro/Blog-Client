@@ -14,14 +14,14 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 const slugs = [
-  "Tech",
+  "Beauty",
   "Fashion",
-  "Rides",
   "Lifestyle",
-  "Entertainment",
-  "Living",
-  "Outdoors",
-  "News",
+  "Travel",
+  "Media",
+  "Wellness",
+  "CollegeLife",
+  "SeasonalFun",
 ];
 async function Home({ searchParams }: { searchParams: { pageNo: string } }) {
   let posts: Blogs[] = [];

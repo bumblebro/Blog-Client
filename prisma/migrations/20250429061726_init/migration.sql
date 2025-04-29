@@ -13,6 +13,7 @@ CREATE TABLE "Blogs" (
     "content" JSONB[],
     "seo" JSONB NOT NULL,
     "creationDate" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "reviews" JSONB[],
 
     CONSTRAINT "Blogs_pkey" PRIMARY KEY ("id")
 );

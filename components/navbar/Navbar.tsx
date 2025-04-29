@@ -6,37 +6,46 @@ import Footer from "../footer/Footer";
 import DeSlugify from "@/libs/DeSlugify";
 import { subSections } from "@/libs/Section";
 
-const Tech = ["Apple", "Audio", "Cameras", "Computers", "Smartphones", "TVs"];
-const Fashion = [
-  "Men's-Fashion-Advice",
-  "Men's-Fashion-Trends",
-  "Men's-Fragrances",
-  "Men's-Hairstyles",
-  "Sneakers-&-Shoes",
-  "Watches",
-];
-const Rides = ["Boats", "Cars", "Cycling", "Flying", "Motorcycles"];
-const Lifestyle = [
-  "Advice",
-  "Drinks",
-  "Fitness",
-  "Finance",
-  "Food",
-  "Grooming",
-  "Sex-&-Dating",
-  "Travel",
-];
-const Entertainment = [
-  "Art",
-  "Books",
-  "Gaming",
-  "Movies-&-TV",
-  "Music",
-  "Sport",
-];
-const Living = ["Appliances", "Architecture", "Furniture", "Homewares"];
-const Outdoors = ["Camping", "Snow", "Surfing", "Skate", "Hiking"];
-const News = ["World-News", "Tech-News", "Sports-News", "Entertainment-News"];
+// const Tech = ["Apple", "Audio", "Cameras", "Computers", "Smartphones", "TVs"];
+// const Fashion = [
+//   "Men's-Fashion-Advice",
+//   "Men's-Fashion-Trends",
+//   "Men's-Fragrances",
+//   "Men's-Hairstyles",
+//   "Sneakers-&-Shoes",
+//   "Watches",
+// ];
+// const Rides = ["Boats", "Cars", "Cycling", "Flying", "Motorcycles"];
+// const Lifestyle = [
+//   "Advice",
+//   "Drinks",
+//   "Fitness",
+//   "Finance",
+//   "Food",
+//   "Grooming",
+//   "Sex-&-Dating",
+//   "Travel",
+// ];
+// const Entertainment = [
+//   "Art",
+//   "Books",
+//   "Gaming",
+//   "Movies-&-TV",
+//   "Music",
+//   "Sport",
+// ];
+// const Living = ["Appliances", "Architecture", "Furniture", "Homewares"];
+// const Outdoors = ["Camping", "Snow", "Surfing", "Skate", "Hiking"];
+// const News = ["World-News", "Tech-News", "Sports-News", "Entertainment-News"];
+
+const Beauty = ["Nails", "Makeup", "Hair", "Skincare"];
+const Fashion = ["Outfits", "Dresses", "Accessories", "Trends"];
+const Lifestyle = ["Food", "Home", "Events", "Inspiration"];
+const Travel = ["Destinations", "Planning"];
+const Media = ["Platforms", "Content"];
+const Wellness = ["Fitness", "Mental-Health"];
+const CollegeLife = ["Dorm", "School", "College"];
+const SeasonalFun = ["Spring", "Summer", "Fall", "Winter"];
 
 function Navbar({
   decodedslug,
@@ -339,17 +348,17 @@ function Navbar({
               <div>
                 <Link
                   onClick={handleSidebar}
-                  href={"/tech"}
+                  href={"/beauty"}
                   className="font-semibold hover:text-[#004ff2] "
                 >
-                  Tech
+                  Beauty
                 </Link>
                 <ul className="font-light flex flex-col gap-3 pt-4">
-                  {Tech.map((item, index) => (
+                  {Beauty.map((item, index) => (
                     <li key={index}>
                       <Link
                         onClick={handleSidebar}
-                        href={`/tech/${item.toLowerCase()}`}
+                        href={`/beauty/${item.toLowerCase()}`}
                         key={index}
                         className="hover:text-[#004ff2]"
                       >
@@ -385,31 +394,8 @@ function Navbar({
               <div>
                 <Link
                   onClick={handleSidebar}
-                  href={"/rides"}
-                  className="font-semibold hover:text-[#004ff2]"
-                >
-                  Rides
-                </Link>
-                <ul className="font-light flex flex-col gap-3   pt-4">
-                  {Rides.map((item, index) => (
-                    <li key={index}>
-                      <Link
-                        onClick={handleSidebar}
-                        href={`/rides/${item.toLowerCase()}`}
-                        key={index}
-                        className="hover:text-[#004ff2]"
-                      >
-                        {DeSlugify(item)}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div>
-                <Link
-                  onClick={handleSidebar}
                   href={"/lifestyle"}
-                  className="font-semibold  hover:text-[#004ff2]"
+                  className="font-semibold hover:text-[#004ff2]"
                 >
                   Lifestyle
                 </Link>
@@ -431,17 +417,17 @@ function Navbar({
               <div>
                 <Link
                   onClick={handleSidebar}
-                  href={"/entertainment"}
+                  href={"/travel"}
                   className="font-semibold  hover:text-[#004ff2]"
                 >
-                  Entertainment
+                  Travel
                 </Link>
                 <ul className="font-light flex flex-col gap-3   pt-4">
-                  {Entertainment.map((item, index) => (
+                  {Travel.map((item, index) => (
                     <li key={index}>
                       <Link
                         onClick={handleSidebar}
-                        href={`/entertainment/${item.toLowerCase()}`}
+                        href={`/travel/${item.toLowerCase()}`}
                         key={index}
                         className="hover:text-[#004ff2]"
                       >
@@ -454,17 +440,40 @@ function Navbar({
               <div>
                 <Link
                   onClick={handleSidebar}
-                  href={"/living"}
+                  href={"/media"}
+                  className="font-semibold  hover:text-[#004ff2]"
+                >
+                  Media
+                </Link>
+                <ul className="font-light flex flex-col gap-3   pt-4">
+                  {Media.map((item, index) => (
+                    <li key={index}>
+                      <Link
+                        onClick={handleSidebar}
+                        href={`/media/${item.toLowerCase()}`}
+                        key={index}
+                        className="hover:text-[#004ff2]"
+                      >
+                        {DeSlugify(item)}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <Link
+                  onClick={handleSidebar}
+                  href={"/wellness"}
                   className="font-semibold hover:text-[#004ff2]"
                 >
-                  Living
+                  Wellness
                 </Link>
                 <ul className="font-light flex flex-col gap-3  pt-4 ">
-                  {Living.map((item, index) => (
+                  {Wellness.map((item, index) => (
                     <li key={index}>
                       <Link
                         onClick={handleSidebar}
-                        href={`/living/${item.toLowerCase()}`}
+                        href={`/wellness/${item.toLowerCase()}`}
                         key={index}
                         className="hover:text-[#004ff2]"
                       >
@@ -477,17 +486,17 @@ function Navbar({
               <div>
                 <Link
                   onClick={handleSidebar}
-                  href={"/outdoors"}
+                  href={"/collegelife"}
                   className="font-semibold hover:text-[#004ff2]"
                 >
-                  Outdoors
+                  College Life
                 </Link>
                 <ul className="font-light flex flex-col gap-3   pt-4">
-                  {Outdoors.map((item, index) => (
+                  {CollegeLife.map((item, index) => (
                     <li key={index}>
                       <Link
                         onClick={handleSidebar}
-                        href={`/outdoors/${item.toLowerCase()}`}
+                        href={`/collegelife/${item.toLowerCase()}`}
                         key={index}
                         className="hover:text-[#004ff2]"
                       >
@@ -500,17 +509,17 @@ function Navbar({
               <div>
                 <Link
                   onClick={handleSidebar}
-                  href={"/news"}
+                  href={"/seasonalfun"}
                   className="font-semibold hover:text-[#004ff2]"
                 >
-                  News
+                  Seasonal Fun
                 </Link>
                 <ul className="font-light flex flex-col gap-3   pt-4">
-                  {News.map((item, index) => (
+                  {SeasonalFun.map((item, index) => (
                     <li key={index}>
                       <Link
                         onClick={handleSidebar}
-                        href={`/news/${item.toLowerCase()}`}
+                        href={`/seasonalfun/${item.toLowerCase()}`}
                         key={index}
                         className="hover:text-[#004ff2]"
                       >
