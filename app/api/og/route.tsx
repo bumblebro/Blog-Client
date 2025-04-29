@@ -69,6 +69,33 @@ const phrases = [
   "Soft, Simple, Stunning",
 ];
 
+const emojis = [
+  "✨",
+  "🌸",
+  "💖",
+  "🛍️",
+  "💅",
+  "🧘‍♀️",
+  "🎀",
+  "🌷",
+  "💫",
+  "💎",
+  "👜",
+  "🌼",
+  "🫶",
+  "💯",
+  "😌",
+  "🍃",
+  "📘",
+  "🎉",
+  "👠",
+  "🧁",
+];
+
+function getRandomEmoji() {
+  return emojis[Math.floor(Math.random() * emojis.length)];
+}
+
 export async function GET(req: NextRequest) {
   const { regularFontData, boldFontData, lightFontData } = await loadFonts();
 
@@ -190,7 +217,9 @@ export async function GET(req: NextRequest) {
           lineHeight: "110px", // Adjust this value as needed
         }}
       >
-        {phrases[Math.floor(Math.random() * phrases.length)]}
+        {phrases[Math.floor(Math.random() * phrases.length)] +
+          " " +
+          getRandomEmoji()}
       </div>{" "}
       <div
         style={{
