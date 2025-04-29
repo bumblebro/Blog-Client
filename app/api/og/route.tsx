@@ -2,16 +2,12 @@ import { NextRequest, NextResponse } from "next/server";
 import { ImageResponse } from "@vercel/og";
 import { url } from "inspector";
 import DeSlugify from "@/libs/DeSlugify";
+import { Permanent_Marker } from "next/font/google";
 
 export const runtime = "experimental-edge";
 
-async function loadGoogleFont() {
-  // const url = "https://fonts.gogleapis.com/css2?family=Pacifico&display=swap";
-  // const url = "https://fonts.googleapis.com/css2?family=Knewave&display=swap";
-  // const url = "https://fonts.gogleapis.com/css2?family=Aclonica&display=swap";
-
-  const url = "https://fonts.googleapis.com/css2?family=Anton+SC&display=swap";
-
+async function loadGoogleFont(font: string, weight: number) {
+  const url = `https://fonts.googleapis.com/css2?family=${font}:wght@${weight}`;
   const css = await (await fetch(url)).text();
   const resource = css.match(
     /src: url\((.+)\) format\('(opentype|truetype)'\)/
@@ -24,7 +20,7 @@ async function loadGoogleFont() {
     }
   }
 
-  throw new Error("failed to load font data");
+  throw new Error("❌ Failed to load font data!");
 }
 
 async function loadFonts() {
@@ -42,12 +38,35 @@ async function loadFonts() {
   return { regularFontData, boldFontData, lightFontData };
 }
 
+// const phrases = [
+//   "The Most Amazing",
+//   "The Best",
+//   "Easy & Simple",
+//   "The Ultimate",
+//   "Simple & Easy",
+// ];
+
 const phrases = [
-  "The Most Amazing",
-  "The Best",
-  "Easy & Simple",
-  "The Ultimate",
-  "Simple & Easy",
+  "Simply Beautiful",
+  "The Ultimate Guide",
+  "Chic & Effortless",
+  "Timeless Favorites",
+  "Tried & Loved",
+  "Your New Obsession",
+  "Made for You",
+  "Pretty & Practical",
+  "So Worth It",
+  "Everyday Essentials",
+  "Elevate Your Routine",
+  "Inspired & Intentional",
+  "A Touch of Luxe",
+  "Curated Just for You",
+  "Fresh & Fabulous",
+  "Little Luxuries",
+  "Feel-Good Favorites",
+  "The Glow-Up Guide",
+  "Editor-Approved",
+  "Soft, Simple, Stunning",
 ];
 
 export async function GET(req: NextRequest) {
@@ -58,8 +77,89 @@ export async function GET(req: NextRequest) {
   // const description = searchParams.get("description") || "Default Description";
   const cover = searchParams.get("cover") || "";
   const num = searchParams.get("num") || "3";
+  function getRandomLightColor() {
+    const r = 150 + Math.floor(Math.random() * 106); // 150–255
+    const g = 150 + Math.floor(Math.random() * 106);
+    const b = 150 + Math.floor(Math.random() * 106);
+    return `rgb(${r}, ${g}, ${b})`;
+  }
+
+  function getRandomDarkColor() {
+    const r = Math.floor(Math.random() * 100); // 0–99
+    const g = Math.floor(Math.random() * 100);
+    const b = Math.floor(Math.random() * 100);
+    return `rgb(${r}, ${g}, ${b})`;
+  }
 
   const templates = [
+    // <div
+    //   key={"1"}
+    //   style={{
+    //     height: "100vh", // Fixed height for the container
+    //     width: "100%",
+    //     display: "flex",
+    //     flexDirection: "column",
+    //     alignItems: "center",
+    //     justifyContent: "flex-start",
+    //     backgroundColor: getRandomDarkColor(),
+    //     // backgroundColor: "black",
+    //     // backgroundImage: `url(${cover})`,
+    //     backdropFilter: "blur(5px)",
+    //   }}
+    // >
+    //   <div
+    //     style={{
+    //       // height: "200px", // Fixed height for title
+    //       paddingTop: "25px",
+    //       paddingBottom: "25px",
+    //       // color: getRandomLightColor(),
+    //       color: "white",
+    //       textAlign: "center",
+    //       paddingRight: "10px",
+    //       paddingLeft: "10px",
+    //       // fontSize: "90px",
+    //       fontSize: "70px",
+    //       // fontFamily: "SoinSansPro-Bold",
+    //       // fontFamily: "source-sans-pro.black",
+    //       fontFamily: "googlefont",
+    //       textTransform: "capitalize",
+    //     }}
+    //   >
+    //     {DeSlugify(title)}
+    //   </div>{" "}
+    //   <div
+    //     style={{
+    //       // height: "60px", // Fixed height for footer text
+    //       textAlign: "center",
+    //       fontSize: "50px",
+    //       color: "black",
+    //       paddingRight: "30px",
+    //       paddingLeft: "30px",
+    //       fontStyle: "normal",
+    //       backgroundColor: "#ffffff",
+    //       fontWeight: 100,
+    //       fontFamily: "source-sans-pro.extralight",
+    //       textTransform: "uppercase",
+    //     }}
+    //   >
+    //     wordofmany.com
+    //   </div>
+    //   <img
+    //     src={cover}
+    //     alt="test"
+    //     height={900}
+    //     width={1000}
+    //     style={{
+    //       flexGrow: 1, // Ensures the image takes available space
+    //       width: "100%",
+    //       objectFit: "cover",
+    //       objectPosition: "center",
+    //       // borderRadius: "100px",
+    //       borderBottomLeftRadius: "0px",
+    //       borderBottomRightRadius: "0px",
+    //     }}
+    //   />
+    // </div>,
     <div
       key={"1"}
       style={{
@@ -69,41 +169,41 @@ export async function GET(req: NextRequest) {
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "flex-start",
-        backgroundColor: "black",
+        backgroundColor: getRandomDarkColor(),
         // backgroundImage: `url(${cover})`,
       }}
     >
-      {/* <div
+      <div
         style={{
           // height: "200px", // Fixed height for title
           // paddingTop: "5px",
           // paddingBottom: "25px",
-          color: "white",
+          color: getRandomLightColor(),
           textAlign: "center",
           paddingRight: "10px",
           paddingLeft: "10px",
-          fontSize: "120px",
+          paddingTop: "20px",
+          fontSize: "100px",
           fontWeight: "900",
-          fontFamily: "source-sans-pro.black",
+          fontFamily: "headfont1",
           textTransform: "uppercase",
+          lineHeight: "110px", // Adjust this value as needed
         }}
       >
         {phrases[Math.floor(Math.random() * phrases.length)]}
-      </div>{" "} */}
+      </div>{" "}
       <div
         style={{
           // height: "200px", // Fixed height for title
-          paddingTop: "25px",
+          // paddingTop: "25px",
           paddingBottom: "25px",
           color: "white",
           textAlign: "center",
           paddingRight: "10px",
           paddingLeft: "10px",
-          fontSize: "90px",
-          // fontSize: "120px",
-          // fontFamily: "SoinSansPro-Bold",
-          fontFamily: "source-sans-pro.black",
-          textTransform: "capitalize",
+          fontSize: "55px",
+          fontFamily: "googlefont",
+          textTransform: "uppercase",
         }}
       >
         {DeSlugify(title)}
@@ -137,81 +237,6 @@ export async function GET(req: NextRequest) {
         }}
       />
     </div>,
-    // <div
-    //   key={"1"}
-    //   style={{
-    //     height: "100vh", // Fixed height for the container
-    //     width: "100%",
-    //     display: "flex",
-    //     flexDirection: "column",
-    //     alignItems: "center",
-    //     justifyContent: "flex-start",
-    //     backgroundColor: "black",
-    //     // backgroundImage: `url(${cover})`,
-    //   }}
-    // >
-    //   <div
-    //     style={{
-    //       // height: "200px", // Fixed height for title
-    //       // paddingTop: "5px",
-    //       // paddingBottom: "25px",
-    //       color: "white",
-    //       textAlign: "center",
-    //       paddingRight: "10px",
-    //       paddingLeft: "10px",
-    //       fontSize: "80px",
-    //       fontWeight: "900",
-    //       fontFamily: "source-sans-pro.black",
-    //       textTransform: "uppercase",
-    //     }}
-    //   >
-    //     {phrases[Math.floor(Math.random() * phrases.length)]}
-    //   </div>{" "}
-    //   <div
-    //     style={{
-    //       // height: "200px", // Fixed height for title
-    //       // paddingTop: "25px",
-    //       paddingBottom: "25px",
-    //       color: "white",
-    //       textAlign: "center",
-    //       paddingRight: "10px",
-    //       paddingLeft: "10px",
-    //       fontSize: "50px",
-    //       fontFamily: "SoinSansPro-Bold",
-    //       textTransform: "capitalize",
-    //     }}
-    //   >
-    //     {DeSlugify(title)}
-    //   </div>{" "}
-    //   <div
-    //     style={{
-    //       // height: "60px", // Fixed height for footer text
-    //       textAlign: "center",
-    //       fontSize: "30px",
-    //       color: "black",
-    //       paddingRight: "30px",
-    //       paddingLeft: "30px",
-    //       fontStyle: "normal",
-    //       backgroundColor: "#FFFFF7",
-    //       fontWeight: 100,
-    //       fontFamily: "source-sans-pro.extralight",
-    //     }}
-    //   >
-    //     wordofmany.com
-    //   </div>
-    //   <img
-    //     src={cover}
-    //     alt="test"
-    //     height={900}
-    //     width={1000}
-    //     style={{
-    //       flexGrow: 1, // Ensures the image takes available space
-    //       width: "100%",
-    //       objectFit: "cover",
-    //       objectPosition: "center",
-    //     }}
-    //   />
-    // </div>,
   ];
 
   const randomTemplate =
@@ -244,10 +269,42 @@ export async function GET(req: NextRequest) {
         // weight: 900,
       },
       {
-        name: "Geist",
-        data: await loadGoogleFont(),
-        weight: 500,
+        name: "googlefont",
+        // data: await loadGoogleFont(
+        //   fonts[Math.floor(Math.random() * fonts.length)],
+        //   400
+        // ),
+        data: await loadGoogleFont("Boldonse", 400),
+        style: "italic",
+      },
+      {
+        name: "headfont1",
+
+        data: await loadGoogleFont(
+          fonts[Math.floor(Math.random() * fonts.length)],
+          400
+        ),
+        // data: await loadGoogleFont("Londrina+Outline", 400),
+
+        style: "normal",
       },
     ],
   });
 }
+
+// const fonts = ["Damion"];
+
+const fonts = [
+  "Zen+Tokyo+Zoo",
+  "Ribeye+Marrow",
+  "Monoton",
+  "Kablammo",
+  "Eater",
+  "Bungee+Shade",
+  "Rubik+Vinyl",
+  "Akronim",
+  "Rubik+Wet+Paint",
+  "Sedgwick+Ave+Display",
+  "Rampart+One",
+  "Nosifer",
+];
