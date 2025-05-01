@@ -460,6 +460,7 @@ export async function GET(req: NextRequest) {
           fontFamily: "source-sans-pro.black",
           textTransform: "uppercase",
           lineHeight: "100px", // Adjust this value as needed
+          paddingTop: "20px",
         }}
       >
         {phrases[Math.floor(Math.random() * phrases.length)]}
