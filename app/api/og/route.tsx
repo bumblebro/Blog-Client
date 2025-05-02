@@ -386,14 +386,6 @@ async function loadFonts() {
   return { regularFontData, boldFontData, lightFontData };
 }
 
-// const phrases = [
-//   "The Most Amazing",
-//   "The Best",
-//   "Easy & Simple",
-//   "The Ultimate",
-//   "Simple & Easy",
-// ];
-
 const phrases = [
   "Simply Beautiful",
   "The Ultimate Guide",
@@ -431,6 +423,7 @@ export async function GET(req: NextRequest) {
     background: isWhiteText ? "black" : "white",
     text: isWhiteText ? "white" : "black",
   };
+
   const templates = [
     <div
       key={"1"}
@@ -446,6 +439,14 @@ export async function GET(req: NextRequest) {
         // backgroundImage: `url(${cover})`,
       }}
     >
+      {" "}
+      <div
+        style={{
+          // marginTop: "5px",
+          borderBottom: `10px solid ${theme.text}`, // Add bottom border
+          width: "100%",
+        }}
+      ></div>
       <div
         style={{
           // height: "200px", // Fixed height for title
@@ -498,6 +499,13 @@ export async function GET(req: NextRequest) {
       >
         wordofmany.com
       </div>
+      <div
+        style={{
+          // marginBottom: "5px",
+          borderBottom: `10px solid ${theme.text}`, // Add bottom border
+          width: "100%",
+        }}
+      ></div>
       <img
         src={cover}
         alt="test"
@@ -511,81 +519,6 @@ export async function GET(req: NextRequest) {
         }}
       />
     </div>,
-    // <div
-    //   key={"1"}
-    //   style={{
-    //     height: "100vh", // Fixed height for the container
-    //     width: "100%",
-    //     display: "flex",
-    //     flexDirection: "column",
-    //     alignItems: "center",
-    //     justifyContent: "flex-start",
-    //     backgroundColor: "black",
-    //     // backgroundImage: `url(${cover})`,
-    //   }}
-    // >
-    //   <div
-    //     style={{
-    //       // height: "200px", // Fixed height for title
-    //       // paddingTop: "5px",
-    //       // paddingBottom: "25px",
-    //       color: "white",
-    //       textAlign: "center",
-    //       paddingRight: "10px",
-    //       paddingLeft: "10px",
-    //       fontSize: "80px",
-    //       fontWeight: "900",
-    //       fontFamily: "source-sans-pro.black",
-    //       textTransform: "uppercase",
-    //     }}
-    //   >
-    //     {phrases[Math.floor(Math.random() * phrases.length)]}
-    //   </div>{" "}
-    //   <div
-    //     style={{
-    //       // height: "200px", // Fixed height for title
-    //       // paddingTop: "25px",
-    //       paddingBottom: "25px",
-    //       color: "white",
-    //       textAlign: "center",
-    //       paddingRight: "10px",
-    //       paddingLeft: "10px",
-    //       fontSize: "50px",
-    //       fontFamily: "SoinSansPro-Bold",
-    //       textTransform: "capitalize",
-    //     }}
-    //   >
-    //     {DeSlugify(title)}
-    //   </div>{" "}
-    //   <div
-    //     style={{
-    //       // height: "60px", // Fixed height for footer text
-    //       textAlign: "center",
-    //       fontSize: "30px",
-    //       color: "black",
-    //       paddingRight: "30px",
-    //       paddingLeft: "30px",
-    //       fontStyle: "normal",
-    //       backgroundColor: "#FFFFF7",
-    //       fontWeight: 100,
-    //       fontFamily: "source-sans-pro.extralight",
-    //     }}
-    //   >
-    //     savorytouch.com
-    //   </div>
-    //   <img
-    //     src={cover}
-    //     alt="test"
-    //     height={900}
-    //     width={1000}
-    //     style={{
-    //       flexGrow: 1, // Ensures the image takes available space
-    //       width: "100%",
-    //       objectFit: "cover",
-    //       objectPosition: "center",
-    //     }}
-    //   />
-    // </div>,
   ];
 
   const randomTemplate =
@@ -617,6 +550,7 @@ export async function GET(req: NextRequest) {
         style: "normal",
         // weight: 900,
       },
+
       {
         name: "Geist",
         data: await loadGoogleFont(),
