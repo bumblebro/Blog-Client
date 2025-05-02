@@ -440,13 +440,13 @@ export async function GET(req: NextRequest) {
       }}
     >
       {" "}
-      <div
+      {/* <div
         style={{
           // marginTop: "5px",
           borderBottom: `10px solid ${theme.text}`, // Add bottom border
           width: "100%",
         }}
-      ></div>
+      ></div> */}
       <div
         style={{
           // height: "200px", // Fixed height for title
