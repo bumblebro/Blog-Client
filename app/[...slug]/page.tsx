@@ -33,8 +33,8 @@ type SEOType = {
   metaDescription: string;
   ogTitle: string;
   ogImage: string;
-  primaryKeywords: string[];
-  secondaryKeywords: string[];
+  primaryKeywordsNew: string[];
+  secondaryKeywordsNew: string[];
 };
 
 export const revalidate = 86400;
@@ -166,11 +166,11 @@ export async function generateMetadata({ params }: params): Promise<Metadata> {
         title: DeSlugify(currentPost?.title || ""),
         description: (currentPost?.seo as SEOType)?.metaDescription,
         keywords: [
-          ...((currentPost?.seo as SEOType)?.primaryKeywords
-            ? (currentPost?.seo as SEOType)?.primaryKeywords
+          ...((currentPost?.seo as SEOType)?.primaryKeywordsNew
+            ? (currentPost?.seo as SEOType)?.primaryKeywordsNew
             : []),
-          ...((currentPost?.seo as SEOType)?.secondaryKeywords
-            ? (currentPost?.seo as SEOType)?.secondaryKeywords
+          ...((currentPost?.seo as SEOType)?.secondaryKeywordsNew
+            ? (currentPost?.seo as SEOType)?.secondaryKeywordsNew
             : []),
         ],
         openGraph: {
